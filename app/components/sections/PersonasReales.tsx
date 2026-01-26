@@ -28,8 +28,8 @@ export default function PersonasReales() {
           {[
             "persona1.webp",
             "persona2.webp",
-            "entrenamiento-3.webp",
-            "entrenamiento-4.webp",
+            "persona3.webp",
+            "persona4.webp",
             "entrenamiento-5.webp",
             "entrenamiento-6.webp",
           ].map((img, i) => (
