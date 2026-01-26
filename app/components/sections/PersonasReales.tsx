@@ -27,7 +27,7 @@ export default function PersonasReales() {
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             "persona1.webp",
-            "entrenamiento-2.webp",
+            "persona2.webp",
             "entrenamiento-3.webp",
             "entrenamiento-4.webp",
             "entrenamiento-5.webp",
