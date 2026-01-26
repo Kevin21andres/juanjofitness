@@ -30,8 +30,8 @@ export default function PersonasReales() {
             "persona2.webp",
             "persona3.webp",
             "persona4.webp",
-            "entrenamiento-5.webp",
-            "entrenamiento-6.webp",
+            "persona5.webp",
+            "persona6.webp",
           ].map((img, i) => (
             <Reveal key={img} delay={0.1 + i * 0.05}>
               <div className="group relative aspect-square overflow-hidden rounded-xl bg-black">
