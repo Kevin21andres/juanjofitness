@@ -26,7 +26,7 @@ export default function PersonasReales() {
         {/* Galería */}
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            "entrenamiento-1.webp",
+            "persona1.webp",
             "entrenamiento-2.webp",
             "entrenamiento-3.webp",
             "entrenamiento-4.webp",
