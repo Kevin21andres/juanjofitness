@@ -5,6 +5,7 @@ import Contacto from "./components/sections/Contacto";
 import Ubicacion from "./components/sections/Ubicacion";
 import SobreJuanjo from "./components/sections/SobreJuanjo";
 import PacksProcell from "./components/sections/PacksProcell";
+import PersonasReales from "./components/sections/PersonasReales";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <SobreJuanjo />
       <Metodo />
       <PacksProcell />
+      <PersonasReales />
       <Servicios />
       <Ubicacion />
       <Contacto />
