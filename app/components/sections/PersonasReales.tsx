@@ -34,11 +34,12 @@ export default function PersonasReales() {
             "entrenamiento-6.webp",
           ].map((img, i) => (
             <Reveal key={img} delay={0.1 + i * 0.05}>
-              <div className="group relative aspect-[4/5] overflow-hidden rounded-xl bg-black">
+              <div className="group relative aspect-square overflow-hidden rounded-xl bg-black">
                 <Image
                   src={`/personas/${img}`}
                   alt="Entrenamiento real en JJHP"
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
