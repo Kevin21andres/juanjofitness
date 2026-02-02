@@ -29,7 +29,7 @@ export default function Contacto() {
           </Link>
 
           <Link
-            href="mailto:contacto@juanjofitness.com"
+            href="mailto:jjhp2026@outlook.es"
             className="rounded-md border border-white/20 px-10 py-4 font-semibold text-white hover:border-white hover:bg-white/5 transition"
           >
             Enviar email
