@@ -8,16 +8,23 @@ export default function Metodo() {
         <div className="max-w-3xl">
           <Reveal>
             <h2 className="text-3xl font-extrabold tracking-tight text-[#0B0B0B] sm:text-4xl">
-              Un método basado en resultados,
-              <span className="text-[#1E90FF]"> no en promesas.</span>
+              Un método diseñado para transformar tu cuerpo,
+              <span className="text-[#1E90FF]"> no para entretenerte.</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="mt-6 text-lg text-gray-600">
-              Cada persona es distinta. Por eso el entrenamiento, la
-              planificación y el seguimiento se adaptan de forma individual,
-              con un enfoque profesional, realista y sostenible.
+              Aquí no trabajamos con rutinas estándar ni planes descargados de
+              internet. Cada proceso está construido en función de tu punto de
+              partida, tus objetivos y tu realidad. Resultados medibles,
+              estrategia clara y evolución constante.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-[#1E90FF]">
+              Método estructurado. Resultados medibles. Sin atajos.
             </p>
           </Reveal>
         </div>
@@ -31,11 +38,12 @@ export default function Metodo() {
                 01
               </span>
               <h3 className="mt-4 text-xl font-bold text-[#0B0B0B]">
-                Planificación individual
+                Estrategia personalizada
               </h3>
               <p className="mt-4 text-gray-600">
-                Programas diseñados según tu nivel, objetivos y contexto real.
-                Nada genérico, nada copiado.
+                Cada entrenamiento y planificación nutricional se diseñan según
+                tu nivel, tus limitaciones y tu objetivo real. Sin plantillas.
+                Sin improvisación.
               </p>
             </div>
           </Reveal>
@@ -47,11 +55,12 @@ export default function Metodo() {
                 02
               </span>
               <h3 className="mt-4 text-xl font-bold text-[#0B0B0B]">
-                Seguimiento y control
+                Seguimiento inteligente
               </h3>
               <p className="mt-4 text-gray-600">
-                Evaluación constante del progreso, ajustes estratégicos y
-                control del rendimiento para avanzar sin estancarte.
+                Medimos progreso, ajustamos cargas, optimizamos nutrición y
+                adaptamos el plan cuando es necesario. El cuerpo evoluciona,
+                el método también.
               </p>
             </div>
           </Reveal>
@@ -63,28 +72,30 @@ export default function Metodo() {
                 03
               </span>
               <h3 className="mt-4 text-xl font-bold text-[#0B0B0B]">
-                Disciplina y compromiso
+                Mentalidad y disciplina
               </h3>
               <p className="mt-4 text-gray-600">
-                El resultado no depende de la motivación puntual, sino de la
-                constancia. Trabajo serio y mentalidad a largo plazo.
+                La motivación es temporal. La disciplina es lo que construye
+                resultados reales. Te acompaño para desarrollar hábitos sólidos
+                y sostenibles en el tiempo.
               </p>
             </div>
           </Reveal>
 
-          {/* Pilar 4 — Marca propia / Procell */}
+          {/* Pilar 4 */}
           <Reveal delay={0.4}>
             <div className="h-full rounded-xl border border-black/5 p-6 transition hover:shadow-sm">
               <span className="text-sm font-semibold uppercase tracking-wide text-[#1E90FF]">
                 04
               </span>
               <h3 className="mt-4 text-xl font-bold text-[#0B0B0B]">
-                Experiencia y marca propia
+                Experiencia real en el sector
               </h3>
               <p className="mt-4 text-gray-600">
-                Fundador de JJHP y distribuidor oficial de Procell Sport,
-                marca referente en suplementación deportiva. Experiencia real
-                y conocimiento profundo del sector.
+                Fundador de JJHP y distribuidor oficial de Procell Sport.
+                Años de experiencia trabajando con deportistas y clientes
+                reales, con conocimiento práctico del rendimiento y la
+                suplementación.
               </p>
             </div>
           </Reveal>

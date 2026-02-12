@@ -13,13 +13,12 @@ export default function Home() {
     <>
       <Hero />
       <PersonasReales />
-      <Servicios />
+      <SobreJuanjo />
       <Metodo />
       <Tarifas />
-      <PacksProcell />
-      <SobreJuanjo />
       <Ubicacion />
       <Contacto />
     </>
   );
 }
+//
