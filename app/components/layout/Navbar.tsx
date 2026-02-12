@@ -42,10 +42,10 @@ export default function Navbar() {
             MÉTODO
           </a>
           <a
-            href="#servicios"
+            href="#tarifas"
             className="text-sm text-gray-300 hover:text-[#1E90FF] transition"
           >
-            SERVICIOS
+            TARIFAS
           </a>
           <Link
             href="/blog"
