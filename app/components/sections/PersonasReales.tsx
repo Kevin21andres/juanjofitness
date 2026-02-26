@@ -3,28 +3,31 @@ import Reveal from "../ui/Reveal";
 
 export default function PersonasReales() {
   return (
-    <section id="personas" className="bg-white border-t border-black/5">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32">
-        
+    <section
+      id="personas"
+      className="relative bg-black text-white"
+    >
+      <div className="mx-auto max-w-7xl px-6 pt-20 pb-28 sm:px-8 lg:px-12">
+
         {/* Heading */}
         <div className="max-w-3xl">
           <Reveal>
-            <h2 className="text-3xl font-extrabold tracking-tight text-[#0B0B0B] sm:text-4xl">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
               Personas reales.{" "}
               <span className="text-[#1E90FF]">Resultados reales.</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-6 text-lg text-gray-600">
-              Personas que entrenan en JJHP con método, disciplina y seguimiento
-              real. Sin filtros. Sin promesas vacías.
+            <p className="mt-6 text-lg text-white/70 leading-relaxed">
+              Transformaciones construidas con método, disciplina y seguimiento
+              profesional. Sin filtros. Sin atajos. Solo trabajo real.
             </p>
           </Reveal>
         </div>
 
         {/* Galería */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 lg:mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             "persona1.webp",
             "persona2.webp",
@@ -34,29 +37,50 @@ export default function PersonasReales() {
             "persona6.webp",
           ].map((img, i) => (
             <Reveal key={img} delay={0.1 + i * 0.05}>
-              <div className="group relative aspect-square overflow-hidden rounded-xl bg-black">
-                <Image
-                  src={`/personas/${img}`}
-                  alt="Entrenamiento real en JJHP"
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+              <div className="group relative overflow-hidden rounded-2xl bg-neutral-900 shadow-2xl shadow-black/50">
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src={`/personas/${img}`}
+                    alt="Transformación real JJHP"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
 
-                {/* Overlay sutil */}
-                <div className="absolute inset-0 bg-black/10 opacity-0 transition group-hover:opacity-100" />
+                {/* Overlay elegante */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+
+                {/* Micro detalle */}
+                <div className="absolute bottom-4 left-4 text-xs text-white/80 opacity-0 transition duration-500 group-hover:opacity-100">
+                  Progreso real · Método JJHP
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
 
-        {/* Nota de honestidad */}
-        <Reveal delay={0.4}>
-          <p className="mt-12 max-w-2xl text-sm text-gray-500">
-            Todas las imágenes corresponden a entrenamientos reales en el centro
-            JJHP, con personas que confían en el método y el trabajo diario.
-          </p>
+        {/* CTA Section */}
+        <Reveal delay={0.3}>
+          <div className="mt-28 text-center">
+            <h3 className="text-2xl font-bold">
+              Tu transformación puede ser la siguiente.
+            </h3>
+
+            <p className="mt-4 text-white/60">
+              Si estás dispuesto a comprometerte, el método se encarga del resto.
+            </p>
+
+            <div className="mt-8">
+              <a
+                href="#contacto"
+                className="inline-flex h-13 items-center justify-center rounded-full bg-[#1E90FF] px-10 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(30,144,255,0.35)] transition hover:bg-[#187bcd] hover:shadow-[0_10px_40px_rgba(30,144,255,0.45)]"              >
+                Empieza hoy
+              </a>
+            </div>
+          </div>
         </Reveal>
+
       </div>
     </section>
   );
