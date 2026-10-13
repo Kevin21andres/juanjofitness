@@ -1,16 +1,16 @@
 export default function Legal() {
   return (
-    <main className="bg-[#0B0B0B] text-white min-h-screen">
+    <main className="min-h-screen bg-[#f2f0ea] pt-[var(--header-height)] text-[#0b1115]">
       {/* Línea superior sutil */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="h-px w-full bg-[#d7d8d2]" />
 
-      <div className="mx-auto max-w-4xl px-6 py-20 sm:py-28">
+      <div className="site-container max-w-4xl py-16 sm:py-24">
         {/* Heading */}
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-12">
+        <h1 className="text-4xl font-extrabold tracking-[-.045em] sm:text-5xl mb-12">
           Aviso Legal
         </h1>
 
-        <p className="text-white/70 leading-relaxed mb-8">
+        <p className="text-[#51616a] leading-relaxed mb-8">
           En cumplimiento con el deber de información recogido en la Ley
           34/2002, de 11 de julio, de Servicios de la Sociedad de la Información
           y de Comercio Electrónico (LSSI-CE), se facilitan a continuación los
@@ -18,27 +18,27 @@ export default function Legal() {
         </p>
 
         {/* Datos */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 mb-14">
-          <ul className="space-y-3 text-white/80">
+        <div className="rounded-2xl border border-[#d7d8d2] bg-white p-6 mb-14">
+          <ul className="space-y-3 text-[#445361]">
             <li>
-              <span className="font-semibold text-white">Responsable:</span>{" "}
+              <span className="font-semibold text-[#0b1115]">Responsable:</span>{" "}
               Juan José Hidalgo Pomes
             </li>
             <li>
-              <span className="font-semibold text-white">Domicilio:</span>{" "}
+              <span className="font-semibold text-[#0b1115]">Domicilio:</span>{" "}
               Tarragona, España
             </li>
             <li>
-              <span className="font-semibold text-white">Correo electrónico:</span>{" "}
+              <span className="font-semibold text-[#0b1115]">Correo electrónico:</span>{" "}
               <a
                 href="mailto:jjhp2026@outlook.es"
-                className="text-[#1E90FF] hover:underline"
+                className="text-[#077c92] hover:underline"
               >
                 jjhp2026@outlook.es
               </a>
             </li>
             <li>
-              <span className="font-semibold text-white">Actividad:</span>{" "}
+              <span className="font-semibold text-[#0b1115]">Actividad:</span>{" "}
               Entrenamiento personal y asesoramiento deportivo
             </li>
           </ul>
@@ -46,8 +46,8 @@ export default function Legal() {
 
         {/* Condiciones */}
         <section className="mb-14">
-          <h2 className="text-xl font-semibold mb-4">Condiciones de uso</h2>
-          <p className="text-white/70 leading-relaxed">
+          <h2 className="text-xl font-extrabold tracking-tight mb-4">Condiciones de uso</h2>
+          <p className="text-[#51616a] leading-relaxed">
             El acceso y uso de este sitio web atribuye la condición de usuario e
             implica la aceptación plena de las presentes condiciones. El usuario
             se compromete a hacer un uso adecuado de los contenidos y servicios
@@ -57,8 +57,8 @@ export default function Legal() {
 
         {/* Propiedad intelectual */}
         <section className="mb-14">
-          <h2 className="text-xl font-semibold mb-4">Propiedad intelectual</h2>
-          <p className="text-white/70 leading-relaxed">
+          <h2 className="text-xl font-extrabold tracking-tight mb-4">Propiedad intelectual</h2>
+          <p className="text-[#51616a] leading-relaxed">
             Todos los contenidos de esta web (textos, imágenes, logotipos,
             diseño, estructura y código fuente) son propiedad de Juan José
             Hidalgo Pomes o cuentan con licencia para su uso, quedando prohibida
@@ -68,8 +68,8 @@ export default function Legal() {
 
         {/* Legislación */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">Legislación aplicable</h2>
-          <p className="text-white/70 leading-relaxed">
+          <h2 className="text-xl font-extrabold tracking-tight mb-4">Legislación aplicable</h2>
+          <p className="text-[#51616a] leading-relaxed">
             La relación entre el titular y el usuario se regirá por la normativa
             española vigente, sometiéndose cualquier controversia a los juzgados
             y tribunales competentes de Tarragona.

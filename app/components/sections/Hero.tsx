@@ -1,122 +1,45 @@
-// app/components/sections/Hero.tsx
 import Image from "next/image";
-import Reveal from "../ui/Reveal";
-
-const WHATSAPP_NUMBER = "34649833960";
-const WHATSAPP_TEXT = encodeURIComponent(
-  "Hola Juanjo, quiero info para empezar un plan. ¿Cómo funciona?"
-);
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section
-      className="relative isolate overflow-hidden bg-black"
-      aria-labelledby="hero-title"
-    >
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,.35)_1px,transparent_0)] [background-size:28px_28px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1E90FF]/10 via-transparent to-transparent" />
-        <div className="absolute left-1/2 top-[-140px] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[#1E90FF]/20 blur-3xl" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
-        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-18">
-          {/* TEXTO */}
-          <div className="order-2 lg:order-1">
-            <Reveal>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur">
-                  Preparación física + nutrición
-                </span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur">
-                  Presencial · Tarragona
-                </span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur">
-                  Online · Seguimiento semanal
-                </span>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.08}>
-              <h1
-                id="hero-title"
-                className="mt-6 text-balance text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
-              >
-                Entrena con un método{" "}
-                <span className="text-[#1E90FF]">real</span>
-                <br className="hidden sm:block" />
-                y consigue{" "}
-                <span className="text-[#1E90FF]">resultados</span> medibles.
-              </h1>
-            </Reveal>
-
-            <Reveal delay={0.16}>
-              <p className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-gray-300 sm:text-xl">
-                Planes personalizados para{" "}
-                <strong className="font-semibold text-white">
-                  perder grasa, ganar músculo y rendir mejor
-                </strong>
-                , con disciplina, control y acompañamiento real.
-              </p>
-            </Reveal>
-
-            {/* CTAs */}
-            <Reveal delay={0.22}>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                <a
-                  href="#contacto"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-[#1E90FF] px-6 text-sm font-semibold text-white shadow-lg shadow-[#1E90FF]/20 transition hover:bg-[#187bcd] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E90FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                >
-                  Empieza hoy
-                </a>
-
-                <a
-                  href="#metodo"
-                  className="inline-flex h-12 items-center justify-center rounded-md border border-white/15 bg-white/0 px-6 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                >
-                  Ver el método
-                </a>
-
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Hablar por WhatsApp"
-                  className="inline-flex h-12 items-center justify-center rounded-md border border-[#1E90FF]/35 bg-[#1E90FF]/10 px-6 text-sm font-semibold text-white transition hover:border-[#1E90FF]/60 hover:bg-[#1E90FF]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E90FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                >
-                  WhatsApp
-                </a>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.36}>
-              <p className="mt-6 text-sm text-gray-400">
-                ✔ Plan 100% adaptado · ✔ Seguimiento real · ✔ Progreso medible
-              </p>
-            </Reveal>
+    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-[#0b1115] pt-[var(--header-height)] text-white">
+      <div className="relative grid min-h-[680px] grid-cols-1 lg:min-h-[min(850px,calc(100svh-82px))] lg:grid-cols-[57%_43%]">
+        <div className="relative z-10 flex flex-col justify-center px-[max(25px,calc((100vw-1450px)/2))] pb-9 pt-13 sm:px-11 lg:px-14 lg:py-16 xl:pl-[max(44px,calc((100vw-1450px)/2))] xl:pr-6">
+          <div className="flex items-center gap-4 text-[10px] font-extrabold uppercase tracking-[.18em] text-white/65">
+            <span className="h-[2px] w-9 bg-[#1ad8ec]"/><span>JUANJO HIDALGO / TARRAGONA + ONLINE</span>
           </div>
-
-          {/* IMAGEN */}
-          <Reveal delay={0.18}>
-            <div className="order-1 lg:order-2">
-              <div className="relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-lg">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-black/50">
-                  <Image
-                    src="/hero/jjhp.webp"
-                    alt="Juanjo Hidalgo · JJHP"
-                    fill
-                    priority
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 520px, 560px"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
-                </div>
-
-                <div className="pointer-events-none absolute -inset-8 -z-10 rounded-3xl bg-[#1E90FF]/25 blur-3xl" />
-              </div>
-            </div>
-          </Reveal>
+          <h1 id="hero-title" className="mt-13 text-[clamp(3.55rem,8.4vw,10rem)] font-black leading-[.90] tracking-[-.095em] max-sm:mt-8 max-sm:text-[clamp(3.3rem,14.3vw,5.3rem)] lg:mt-14">
+            ENTRENA.<br/><span className="text-[#1ad8ec]">PROGRESA.</span><br/>REPITE.
+          </h1>
+          <div className="mt-7 max-w-[590px] sm:mt-11 border-l-[2px] border-[#1ad8ec] pl-5 sm:pl-7">
+            <p className="max-w-xl text-[clamp(1rem,1.7vw,1.25rem)] font-medium leading-[1.7] text-white/80">Tu cuerpo no necesita otra rutina genérica. Necesita un plan diseñado para ti, seguimiento real y alguien que sepa cuándo ajustar.</p>
+          </div>
+          <div className="mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
+            <Link href="/#contacto" className="action-primary">QUIERO EMPEZAR <span aria-hidden="true">↗</span></Link>
+            <Link href="/#metodo" className="action-outline">VER EL MÉTODO <span aria-hidden="true">↓</span></Link>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-x-10 sm:mt-13 gap-y-4 border-t border-white/20 pt-5 text-xs font-bold text-white/55">
+            <span><strong className="mr-2 text-lg font-black text-white">10+</strong>Años de experiencia</span>
+            <span>Entrenamiento presencial <span className="text-[#1ad8ec]">/</span> online</span>
+          </div>
+        </div>
+        <div className="relative min-h-[360px] overflow-hidden bg-[#26282a] lg:min-h-0">
+          <Image src="/sobrejuanjo/sobrejuanjo.webp" alt="Juanjo Hidalgo, entrenador personal, en su centro de entrenamiento" fill priority
+            sizes="(max-width:1023px) 100vw, 43vw"
+            className="object-cover object-[center_30%] grayscale"/>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1115]/85 via-transparent to-[#0b1115]/15"/>
+          <span aria-hidden="true" className="pointer-events-none absolute -left-1 bottom-5 hidden select-none text-[clamp(8rem,19vw,22rem)] font-black leading-none tracking-[-.12em] text-white/8 mix-blend-overlay lg:block">JJ</span>
+          <div className="absolute bottom-7 left-7 right-7 flex items-end justify-between border-t border-white/55 pt-4 text-[10px] font-black uppercase tracking-[.16em] text-white sm:left-12 sm:right-12">
+            <span>THE WORK IS THE WAY.</span><span>JJHP ©</span>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/15 bg-[#11191e]">
+        <div className="site-container grid gap-4 py-5 text-[10px] font-extrabold uppercase tracking-[.12em] text-white/55 sm:grid-cols-3 sm:gap-6">
+          <div className="flex justify-between gap-4 sm:justify-start"><span className="text-[#1ad8ec]">01</span><span>Entrenamiento individualizado</span></div>
+          <div className="flex justify-between gap-4 sm:justify-start"><span className="text-[#1ad8ec]">02</span><span>Planificación con criterio</span></div>
+          <div className="flex justify-between gap-4 sm:justify-start"><span className="text-[#1ad8ec]">03</span><span>Progreso con seguimiento</span></div>
         </div>
       </div>
     </section>

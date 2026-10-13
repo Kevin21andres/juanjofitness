@@ -1,0 +1,16 @@
+{
+  "slug": "ejemplo",
+  "title": "Ejemplo",
+  "excerpt": "ejemplo12",
+  "body": "hoy se redacta el ejemplo\n\n![Descripción de la fotografía](/blog/uploads/74769e1c-0baf-4e76-ad16-b72c9e84abbe.png)",
+  "cover": "/blog/uploads/fba5226e-2146-4d37-8fb7-d1b8c0fa81b0.png",
+  "category": "Entrenamiento",
+  "status": "published",
+  "date": "2026-10-13",
+  "updatedAt": "2026-10-13T20:05:36.258Z",
+  "author": "Juanjo Hidalgo",
+  "tags": [
+    "fitness",
+    "gym"
+  ]
+}

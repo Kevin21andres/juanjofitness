@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Raleway } from "next/font/google";
+import "./globals.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
 const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-raleway",
   display: "swap",
 });
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Juanjo Fitness · Tarragona",
   },
   description:
-    "Entrenador personal y preparador físico en Tarragona, especializado en transformación corporal, rendimiento y competición. Método serio, seguimiento real y resultados medibles.",
+    "Preparación física y entrenamiento personal en Tarragona y online. Programas personalizados, seguimiento y objetivos reales con Juanjo Hidalgo.",
   keywords: [
     "entrenador personal Tarragona",
     "preparador físico Tarragona",
@@ -29,47 +30,30 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://juanjofitness.com"),
   openGraph: {
     title: "Entrenador personal en Tarragona | Juanjo Fitness",
-    description:
-      "Preparador físico en Tarragona especializado en transformación corporal y competición. Entrenamiento real, resultados reales.",
+    description: "Preparación física, transformación corporal y competición. Entrena con un plan pensado para ti.",
     url: "https://juanjofitness.com",
     siteName: "Juanjo Fitness",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Juanjo Fitness · Entrenador personal en Tarragona",
-      },
-    ],
+    images: [{
+      url: "/blog/covers/logo_jjhp.png",
+      width: 1200,
+      height: 630,
+      alt: "Juanjo Fitness · Entrenador personal en Tarragona",
+    }],
     locale: "es_ES",
     type: "website",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
-  alternates: {
-    canonical: "https://juanjofitness.com",
-  },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
-      <body
-        suppressHydrationWarning
-        className={`${raleway.className} antialiased bg-[#0B0B0B]`}
-      >
+    <html lang="es" className={raleway.variable}>
+      <body className="antialiased">
+        <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-white focus:px-5 focus:py-3 focus:text-[#101820]">
+          Saltar al contenido
+        </a>
         <Navbar />
-        <main className="bg-[#0B0B0B]">{children}</main>
+        <div id="contenido">{children}</div>
         <Footer />
       </body>
     </html>

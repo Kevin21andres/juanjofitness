@@ -1,87 +1,25 @@
-import Reveal from "../ui/Reveal";
+const phases = [
+  {number:"01",name:"ESCUCHAR",body:"Entender tu situación, tus hábitos, el tiempo que tienes y hasta dónde quieres llegar."},
+  {number:"02",name:"PLANIFICAR",body:"Elegir qué hacer, cuándo y con qué intensidad. Un programa con una lógica clara."},
+  {number:"03",name:"REVISAR",body:"Analizar cómo respondes y ajustar entrenamiento y pautas cuando sea necesario."},
+  {number:"04",name:"AVANZAR",body:"Convertir las buenas decisiones en continuidad. Trabajar hoy pensando en mañana."},
+];
 
-export default function Metodo() {
-  return (
-    <section id="metodo" className="relative bg-white border-t border-black/5">
-      <div className="mx-auto max-w-7xl px-6 py-28 sm:px-8 lg:px-12">
-
-        {/* Heading */}
-        <div className="max-w-3xl">
-          <Reveal>
-            <h2 className="text-4xl font-extrabold tracking-tight text-[#0B0B0B] sm:text-5xl lg:text-6xl leading-tight">
-              Un método diseñado para transformar tu cuerpo,
-              <span className="text-[#1E90FF]"> no para entretenerte.</span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="mt-8 text-lg text-gray-600 leading-relaxed">
-              Aquí no trabajamos con rutinas estándar ni planes descargados de
-              internet. Cada proceso está construido en función de tu punto de
-              partida, tus objetivos y tu realidad.
-              <span className="block mt-4">
-                Resultados medibles. Estrategia clara. Evolución constante.
-              </span>
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-[#1E90FF]">
-              MÉTODO ESTRUCTURADO · RESULTADOS MEDIBLES · SIN ATAJOS
-            </p>
-          </Reveal>
-        </div>
-
-        {/* Pilares */}
-        <div className="mt-24 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-
-          {/* Pilar */}
-          {[
-            {
-              number: "01",
-              title: "Estrategia personalizada",
-              text: "Cada entrenamiento y planificación nutricional se diseñan según tu nivel, tus limitaciones y tu objetivo real. Sin plantillas. Sin improvisación."
-            },
-            {
-              number: "02",
-              title: "Seguimiento inteligente",
-              text: "Medimos progreso, ajustamos cargas, optimizamos nutrición y adaptamos el plan cuando es necesario. El cuerpo evoluciona, el método también."
-            },
-            {
-              number: "03",
-              title: "Mentalidad y disciplina",
-              text: "La motivación es temporal. La disciplina es lo que construye resultados reales. Desarrollamos hábitos sólidos y sostenibles."
-            },
-            {
-              number: "04",
-              title: "Experiencia real en el sector",
-              text: "Años trabajando con deportistas y clientes reales, con conocimiento práctico del rendimiento y la suplementación."
-            }
-          ].map((pilar, i) => (
-            <Reveal key={pilar.number} delay={0.1 + i * 0.1}>
-              <div className="group relative">
-                
-                {/* Número grande tipo editorial */}
-                <span className="text-xs font-semibold tracking-[0.2em] text-[#1E90FF]">
-                  {pilar.number}
-                </span>
-
-                <h3 className="mt-6 text-xl font-semibold text-[#0B0B0B] transition duration-300 group-hover:text-[#1E90FF]">
-                  {pilar.title}
-                </h3>
-
-                <p className="mt-4 text-gray-600 leading-relaxed text-sm">
-                  {pilar.text}
-                </p>
-
-                {/* Línea inferior minimal */}
-                <div className="mt-6 h-[1px] w-0 bg-[#1E90FF] transition-all duration-500 group-hover:w-12" />
-              </div>
-            </Reveal>
-          ))}
-
-        </div>
-      </div>
-    </section>
-  );
+export default function Metodo(){
+ return <section id="metodo" className="overflow-hidden bg-[#10191f] text-white">
+   <div className="site-container section-space grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-26">
+     <div className="lg:sticky lg:top-32 lg:self-start">
+       <p className="kicker kicker-light">03 / EL MÉTODO</p>
+       <h2 className="section-heading mt-7">MENOS RUIDO.<br/><span className="text-[#1ad8ec]">MÁS SENTIDO.</span></h2>
+       <p className="body-copy mt-8 max-w-lg text-white/60">No necesitas un plan espectacular sobre el papel. Necesitas uno que funcione contigo, que se pueda seguir y que evolucione.</p>
+       <div className="mt-11 flex items-center gap-5 border-t border-white/20 pt-7 text-[10px] font-black uppercase tracking-[.18em] text-[#1ad8ec]"><span className="h-[2px] w-9 bg-[#1ad8ec]"/> CADA PASO TIENE UN PORQUÉ.</div>
+     </div>
+     <ol className="border-t border-white/25">
+       {phases.map(phase=><li key={phase.number} className="grid gap-5 border-b border-white/25 py-9 sm:grid-cols-[80px_1fr] sm:gap-6 lg:py-11">
+         <span className="text-4xl font-black tracking-[-.07em] text-[#1ad8ec]">{phase.number}</span>
+         <div><h3 className="text-[clamp(2rem,3.6vw,3.9rem)] font-black leading-none tracking-[-.065em]">{phase.name}</h3><p className="mt-5 max-w-md text-base leading-8 text-white/60">{phase.body}</p></div>
+       </li>)}
+     </ol>
+   </div>
+ </section>;
 }

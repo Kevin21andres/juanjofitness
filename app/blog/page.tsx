@@ -1,191 +1,103 @@
-// app/blog/page.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { BLOG_POSTS } from "./_data/posts";
+import type { Metadata } from "next";
+import { CATEGORIES, mediaUrl } from "@/lib/blog-types";
+import { getPublishedBlogPosts } from "@/lib/current-posts";
 
-export const metadata = {
-  title: "Blog | JJHP",
-  description: "Entrenamiento, nutrición, disciplina y rendimiento con método JJHP.",
+export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Artículos de Juanjo Hidalgo sobre entrenamiento, nutrición y preparación física.",
+  alternates: { canonical: "/blog" },
 };
 
-const categories = [
-  "Todos",
-  "Entrenamiento",
-  "Nutrición",
-  "Disciplina",
-  "Suplementación",
-  "Competición",
-] as const;
+type BlogQuery = { q?: string; cat?: string };
 
-export default function BlogPage({
-  searchParams,
-}: {
-  searchParams?: { q?: string; cat?: string };
-}) {
-  const q = (searchParams?.q ?? "").toLowerCase().trim();
-  const cat = searchParams?.cat ?? "Todos";
-
-  const filtered = BLOG_POSTS.filter((p) => (cat === "Todos" ? true : p.category === cat))
-    .filter((p) => {
-      if (!q) return true;
-      const hay = `${p.title} ${p.excerpt} ${p.tags.join(" ")} ${p.category}`.toLowerCase();
-      return hay.includes(q);
-    })
-    .sort((a, b) => (a.date < b.date ? 1 : -1))
-    .slice(0, 3); // ✅ con 3 está bien para empezar
+export default async function BlogPage({ searchParams }: { searchParams: Promise<BlogQuery> }) {
+  const query = await searchParams;
+  const q = typeof query.q === "string" ? query.q.slice(0, 100).trim() : "";
+  const cat = typeof query.cat === "string" && CATEGORIES.some(c => c === query.cat) ? query.cat : "Todos";
+  const normalized = q.toLocaleLowerCase("es");
+  const posts = (await getPublishedBlogPosts()).filter(post =>
+    (cat === "Todos" || post.category === cat) &&
+    (!normalized || [post.title, post.excerpt, post.body, post.tags.join(" ")].join(" ").toLocaleLowerCase("es").includes(normalized))
+  );
 
   return (
-    <main className="min-h-screen bg-[#0B0B0B]">
-      {/* HERO */}
-      <section className="relative border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#1E90FF]">
-              Blog JJHP
-            </p>
-
-            <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Entrenamiento, nutrición y disciplina.
-            </h1>
-
-            <p className="mt-5 text-lg text-white/70 leading-relaxed">
-              Artículos prácticos, sin humo: estructura, progresión y hábitos reales.
-            </p>
-
-            <div className="mt-7 inline-flex flex-wrap items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white/70">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
-              Método · Resultados · Sin atajos
-            </div>
-          </div>
-
-          {/* Search + categories */}
-          <div className="mt-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <form className="flex w-full max-w-xl items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 shadow-[0_18px_55px_rgba(0,0,0,0.35)]">
-              <span className="text-white/40">⌕</span>
-
-              <input
-                name="q"
-                defaultValue={searchParams?.q ?? ""}
-                placeholder="Buscar: déficit, rutina, disciplina..."
-                className="w-full bg-transparent text-sm outline-none text-white placeholder:text-white/35"
-              />
-
-              <input type="hidden" name="cat" value={cat} />
-
-              <button className="rounded-full bg-[#1E90FF] px-5 py-2 text-xs font-semibold text-white shadow-lg shadow-[#1E90FF]/20 transition hover:bg-[#187bcd]">
-                Buscar
-              </button>
-            </form>
-
-            <div className="flex flex-wrap gap-2">
-              {categories.map((c) => {
-                const active = c === cat;
-                const href = `/blog?cat=${encodeURIComponent(c)}${
-                  q ? `&q=${encodeURIComponent(q)}` : ""
-                }`;
-
-                return (
-                  <Link
-                    key={c}
-                    href={href}
-                    className={[
-                      "inline-flex items-center rounded-full px-4 py-2 text-xs font-semibold transition",
-                      active
-                        ? "bg-[#1E90FF] text-white"
-                        : "border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/[0.07]",
-                    ].join(" ")}
-                  >
-                    {c}
-                  </Link>
-                );
-              })}
-            </div>
+    <main className="min-h-screen bg-[#f2f0ea] pt-[var(--header-height)] text-[#0b1115]">
+      <div className="border-b border-[#d7d8d2] bg-[#0b1115] text-white">
+        <div className="site-container py-19 sm:py-28">
+          <p className="kicker kicker-light">EL JOURNAL / JJHP</p>
+          <div className="mt-5 grid gap-7 lg:grid-cols-[1.2fr_.8fr] lg:items-end lg:gap-16">
+            <h1 className="display-heading">ENTRENA.<br/><span className="text-[#1ad8ec]">APRENDE.</span></h1>
+            <p className="max-w-md text-base leading-7 text-white/65">Entrenamiento, nutrición y decisiones que ayudan a progresar. Ideas, entrenamiento y perspectiva nacidas del trabajo real.</p>
           </div>
         </div>
+      </div>
+      <div className="site-container section-space">
+        <div className="flex flex-col gap-7 border-b border-[#d1d5d2] pb-8 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="kicker">Explorar artículos</p>
+            <p aria-live="polite" className="mt-2 text-sm font-semibold text-[#51616a]">{posts.length} {posts.length === 1 ? "publicación" : "publicaciones"}</p>
+          </div>
+          <form action="/blog" method="get" role="search" className="flex w-full max-w-lg items-stretch gap-2">
+            {cat !== "Todos" && <input type="hidden" name="cat" value={cat} />}
+            <label htmlFor="blog-search" className="sr-only">Buscar publicaciones</label>
+            <input id="blog-search" name="q" type="search" defaultValue={q} maxLength={100}
+              placeholder="Buscar un tema..."
+              className="min-w-0 flex-1 border border-[#bac5ca] bg-white px-4 py-3 text-sm text-[#0b1115] placeholder:text-[#6e7b86]"/>
+            <button type="submit" className="action-dark">Buscar</button>
+          </form>
+        </div>
 
-        {/* Glow sutil */}
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[520px] -translate-x-1/2 rounded-full bg-[#1E90FF]/20 blur-3xl" />
-      </section>
+        <nav aria-label="Categorías del blog" className="-mx-1 mt-6 flex gap-2 overflow-x-auto px-1 pb-3">
+          {(["Todos", ...CATEGORIES] as string[]).map(item => {
+            const active = cat === item;
+            const href = "/blog?cat=" + encodeURIComponent(item) + (q ? "&q=" + encodeURIComponent(q) : "");
+            return <Link key={item} href={href} aria-current={active ? "page" : undefined}
+              className={"whitespace-nowrap border px-4 py-2.5 text-xs font-extrabold transition-colors " +
+              (active ? "border-[#0b1115] bg-[#0b1115] text-white" : "border-[#d0d9dc] bg-white text-[#51616a] hover:border-[#0b1115] hover:text-[#0b1115]")}>{item}</Link>;
+          })}
+        </nav>
 
-      {/* GRID */}
-      <section>
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
-          {filtered.length === 0 ? (
-            <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-10 text-center shadow-[0_18px_55px_rgba(0,0,0,0.35)]">
-              <h2 className="text-xl font-bold text-white">No hay resultados</h2>
-              <p className="mt-3 text-white/70">Prueba con otra búsqueda o categoría.</p>
-
-              <Link
-                href="/blog"
-                className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-[#1E90FF] px-8 text-sm font-semibold text-white shadow-lg shadow-[#1E90FF]/20 transition hover:bg-[#187bcd]"
-              >
-                Ver todo el blog
-              </Link>
-            </div>
-          ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/blog/${p.slug}`}
-                  className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_18px_55px_rgba(0,0,0,0.35)] transition hover:-translate-y-0.5 hover:bg-white/[0.06]"
-                >
-                  <div className="relative aspect-[16/10] bg-black">
-                    <Image
-                      src={p.cover}
-                      alt={p.title}
-                      fill
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/0 to-black/0" />
-
-                    <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/45 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-                      {p.category}
-                    </div>
+        {posts.length === 0 ? (
+          <div className="mt-12 border border-[#d7d8d2] bg-white px-7 py-16 text-center">
+            <h2 className="text-2xl font-extrabold">No hay artículos con esos filtros.</h2>
+            <p className="mt-3 text-sm leading-7 text-[#51616a]">Prueba otra búsqueda o vuelve a ver todo el contenido.</p>
+            <Link href="/blog" className="action-dark mt-7">Ver todos los artículos</Link>
+          </div>
+        ) : (
+          <div className="mt-10 grid gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
+            {posts.map((post, index) => (
+              <article key={post.slug} className={"group min-w-0 " + (index === 0 ? "md:col-span-2 xl:col-span-2" : "")}>
+                <Link href={"/blog/" + post.slug} className="block h-full">
+                  <div className={"relative overflow-hidden bg-[#d7d8d2] " + (index === 0 ? "aspect-[16/10] sm:aspect-[16/8]" : "aspect-[16/10]")}>
+                    {post.cover && !post.cover.includes("logo_jjhp.png") ? (
+                      <Image alt={post.title} src={mediaUrl(post.cover)} unoptimized={post.cover.startsWith("/blog/uploads/")}
+                        fill loading={index === 0 ? "eager" : "lazy"} fetchPriority={index === 0 ? "high" : "auto"}
+                        sizes={index === 0 ? "(max-width: 767px) 100vw, (max-width: 1279px) 100vw, 800px" : "(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 390px"}
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"/>
+                    ) : (
+                      <div className={"absolute inset-0 flex flex-col justify-between overflow-hidden p-7 sm:p-10 " + (index % 2 ? "bg-[#193c44]" : "bg-[#102026]")}>
+                        <div className="flex items-center justify-between gap-3 border-b border-white/20 pb-4 text-[10px] font-black uppercase tracking-[.18em] text-[#1ad8ec]"><span>THE JJHP JOURNAL</span><span>{String(index+1).padStart(2, "0")} /</span></div>
+                        <span aria-hidden="true" className="absolute -bottom-9 -right-6 rotate-[-8deg] select-none text-[clamp(7rem,16vw,15rem)] font-black leading-none tracking-[-.15em] text-white/[.045]">JJHP</span>
+                        <p className="relative max-w-[570px] text-[clamp(1.65rem,3.8vw,4rem)] font-black leading-[.99] tracking-[-.065em] text-white">{post.title}</p>
+                        <span className="text-[11px] font-black uppercase tracking-[.16em] text-[#1ad8ec]">{post.category}</span>
+                      </div>
+                    )}
                   </div>
-
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-white transition group-hover:text-[#1E90FF]">
-                      {p.title}
-                    </h3>
-
-                    <p className="mt-3 text-sm text-white/70 leading-relaxed">
-                      {p.excerpt}
-                    </p>
-
-                    <div className="mt-5 flex items-center justify-between text-xs text-white/45">
-                      <span>
-                        {new Date(p.date).toLocaleDateString("es-ES", {
-                          year: "numeric",
-                          month: "short",
-                          day: "2-digit",
-                        })}
-                      </span>
-                      <span>{p.readingTime}</span>
-                    </div>
-
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {p.tags.slice(0, 3).map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold text-white/70"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="mt-6 flex items-center gap-3 text-xs font-extrabold tracking-[.04em] text-[#077c92]">
+                    <span>{post.category}</span><span aria-hidden="true" className="text-[#8a959a]">/</span><time dateTime={post.date} className="text-[#647481]">{post.date}</time>
                   </div>
-
-                  {/* Línea inferior sutil */}
-                  <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <h2 className={"mt-3 font-extrabold tracking-tight transition-colors group-hover:text-[#077c92] " + (index === 0 ? "text-2xl leading-tight sm:text-4xl" : "text-xl leading-snug")}>{post.title}</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[#51616a]">{post.excerpt}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 border-b border-[#0b1115] pb-1 text-xs font-extrabold">Leer artículo <span aria-hidden="true">↗</span></span>
                 </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
     </main>
   );
 }

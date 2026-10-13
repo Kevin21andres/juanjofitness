@@ -1,115 +1,45 @@
 import Image from "next/image";
-import Reveal from "../ui/Reveal";
+import Link from "next/link";
 
 export default function SobreJuanjo() {
   return (
-    <section id="sobre-mi" className="relative bg-white">
-
-      {/* TRANSICIÓN MÁS SUTIL DESDE SECCIÓN NEGRA */}
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black via-black/40 to-transparent pointer-events-none" />
-
-      <div className="mx-auto max-w-7xl px-4 pt-24 pb-28 sm:px-6 sm:pt-24 sm:pb-32">
-
-        {/* BLOQUE PRINCIPAL */}
-        <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
-
-          {/* TEXTO */}
+    <section id="sobre-mi" className="overflow-hidden bg-[#f2f0ea] text-[#0b1115]">
+      <div className="site-container section-space">
+        <div className="grid gap-10 border-b border-[#cdd0c9] pb-12 lg:grid-cols-[1.25fr_.75fr] lg:items-end lg:gap-24 lg:pb-17">
           <div>
-            <Reveal>
-              <h2 className="text-3xl font-bold tracking-tight text-[#0B0B0B] sm:text-4xl lg:text-5xl">
-                Quién está detrás de{" "}
-                <span className="text-[#1E90FF] font-semibold">JJHP</span>
-              </h2>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <p className="mt-6 text-lg text-gray-700 leading-relaxed">
-                Soy Juanjo Hidalgo, preparador físico y entrenador personal con
-                más de{" "}
-                <strong className="text-[#0B0B0B]">
-                  10 años de experiencia
-                </strong>{" "}
-                en transformación corporal, rendimiento y competición.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <p className="mt-4 text-base text-gray-600 leading-relaxed">
-                He trabajado con todo tipo de perfiles, desde personas que
-                empiezan de cero hasta atletas en competición. Esa experiencia
-                es la base de un método exigente, realista y sostenible.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.3}>
-              <p className="mt-4 text-base text-gray-600 leading-relaxed">
-                Fundador de JJHP y distribuidor oficial de Procell Sport,
-                apostando siempre por calidad, seguridad y resultados reales.
-              </p>
-            </Reveal>
+            <p className="kicker">01 / QUIÉN HAY DETRÁS</p>
+            <h2 className="section-heading mt-7">EL MÉTODO TIENE <span className="text-[#077c92]">NOMBRE PROPIO.</span></h2>
           </div>
-
-          {/* IMAGEN PRINCIPAL */}
-          <Reveal delay={0.2}>
-            <div className="relative mx-auto w-full max-w-sm">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
-                <Image
-                  src="/sobrejuanjo/sobrejuanjo.webp"
-                  alt="Juanjo Hidalgo JJHP"
-                  fill
-                  className="object-cover grayscale"
-                />
+          <p className="body-copy max-w-md text-[#506068]">Juanjo Hidalgo. Preparador físico, entrenador y competidor. Más de una década transformando experiencia en programas que tienen sentido para cada persona.</p>
+        </div>
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.02fr_.98fr] lg:gap-12">
+          <div className="relative min-h-[340px] overflow-hidden bg-[#283036] sm:min-h-[560px] lg:min-h-[660px]">
+            <Image src="/sobrejuanjo/sobrejuanjo2.webp" alt="Juanjo en preparación física, trabajando su forma de competición" fill
+              sizes="(max-width:1023px) 100vw, 50vw" className="object-cover object-center"/>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0b1115]/80 to-transparent p-6 pt-24 text-white sm:p-9">
+              <div className="flex items-center justify-between border-t border-white/60 pt-4 text-[11px] font-extrabold uppercase tracking-[.13em]">
+                <span>EXPERIENCIA REAL</span><span>NO HAY ATAJOS.</span>
               </div>
-
-              <div className="absolute -inset-4 -z-10 rounded-2xl bg-[#1E90FF]/10 blur-3xl" />
             </div>
-          </Reveal>
-        </div>
-
-        {/* BLOQUE AUTORIDAD */}
-        <Reveal delay={0.25}>
-          <div className="mt-20 max-w-2xl">
-            <h3 className="text-xl font-semibold text-[#0B0B0B]">
-              Competición, disciplina y resultados de élite.
-            </h3>
-            <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-              Experiencia real en escenario profesional y compromiso absoluto
-              con la excelencia física y mental.
-            </p>
           </div>
-        </Reveal>
-
-        {/* GRID EDITORIAL */}
-        <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_0.5fr]">
-
-          {/* IMAGEN GRANDE */}
-          <Reveal delay={0.3}>
-            <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
-              <Image
-                src="/sobrejuanjo/sobrejuanjo2.webp"
-                alt="Preparación física profesional JJHP"
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+          <div className="flex flex-col justify-between gap-10 border-t-2 border-[#0b1115] pt-8 lg:border-t-0 lg:px-8 lg:pt-4">
+            <div>
+              <span className="text-[11px] font-extrabold tracking-[.22em] text-[#077c92]">JJHP / DESDE LA EXPERIENCIA</span>
+              <h3 className="mt-10 text-[clamp(2.1rem,4.5vw,4.8rem)] font-black leading-[1.05] tracking-[-.075em]">
+                EL CAMBIO SE ENTRENA.<br/><span className="text-[#077c92]">NO SE PROMETE.</span>
+              </h3>
+              <p className="body-copy mt-9 max-w-xl text-[#506068]">He trabajado con personas que empiezan de cero y con atletas que preparan una competición. Mi trabajo consiste en entender dónde estás y construir contigo el siguiente paso.</p>
+              <p className="body-copy mt-5 max-w-xl text-[#506068]">Cada decisión tiene un porqué: una carga, un ajuste nutricional, una revisión. Porque progresar no consiste en hacerlo todo, sino en hacer lo que toca.</p>
             </div>
-          </Reveal>
-
-          {/* IMAGEN SECUNDARIA */}
-          <Reveal delay={0.4}>
-            <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl shadow-lg">
-              <Image
-                src="/sobrejuanjo/sobrejuanjo3.webp"
-                alt="IFBB Pro Card y trayectoria competitiva"
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+            <div>
+              <div className="flex items-baseline gap-4 border-t border-[#cbd1ce] py-6">
+                <span className="text-[clamp(3.6rem,6.5vw,6rem)] font-black leading-none tracking-[-.1em]">10<span className="text-[#077c92]">+</span></span>
+                <p className="max-w-[200px] text-sm font-bold leading-6 text-[#506068]">Años de experiencia en preparación física</p>
+              </div>
+              <Link href="/#contacto" className="action-dark mt-5">CONOCER A JUANJO <span aria-hidden="true">↗</span></Link>
             </div>
-          </Reveal>
-
+          </div>
         </div>
-
       </div>
     </section>
   );

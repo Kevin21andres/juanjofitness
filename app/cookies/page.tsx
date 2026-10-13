@@ -1,26 +1,25 @@
 export default function Cookies() {
   return (
-    <main className="bg-[#0B0B0B] text-white min-h-screen">
+    <main className="min-h-screen bg-[#f2f0ea] pt-[var(--header-height)] text-[#0b1115]">
       {/* Línea superior sutil */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="h-px w-full bg-[#d7d8d2]" />
 
-      <div className="mx-auto max-w-4xl px-6 py-20 sm:py-28">
+      <div className="site-container max-w-4xl py-16 sm:py-24">
         {/* Heading */}
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-12">
+        <h1 className="text-4xl font-extrabold tracking-[-.045em] sm:text-5xl mb-12">
           Política de Cookies
         </h1>
 
-        <p className="text-white/70 leading-relaxed mb-10">
-          Este sitio web utiliza únicamente cookies técnicas necesarias para su
-          correcto funcionamiento.
+        <p className="text-[#51616a] leading-relaxed mb-10">
+          Este sitio web utiliza los recursos técnicos necesarios para funcionar. El mapa de Google Maps se carga únicamente cuando el visitante decide mostrarlo. Los servicios de terceros pueden tratar datos y utilizar cookies según sus propias políticas.
         </p>
 
         {/* ¿Qué son? */}
         <section className="mb-14">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-extrabold tracking-tight mb-4">
             ¿Qué son las cookies?
           </h2>
-          <p className="text-white/70 leading-relaxed">
+          <p className="text-[#51616a] leading-relaxed">
             Las cookies son pequeños archivos que se almacenan en el navegador
             del usuario con la finalidad de garantizar el correcto
             funcionamiento del sitio web.
@@ -29,26 +28,23 @@ export default function Cookies() {
 
         {/* Tipo de cookies */}
         <section className="mb-14">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-extrabold tracking-tight mb-4">
             Tipo de cookies utilizadas
           </h2>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p className="text-white/80 leading-relaxed">
-              Esta web no utiliza cookies analíticas, publicitarias ni de
-              terceros. Únicamente se emplean cookies técnicas necesarias
-              gestionadas por el proveedor de alojamiento (Vercel) para
-              garantizar la seguridad y el rendimiento del servicio.
+          <div className="rounded-2xl border border-[#d7d8d2] bg-white p-6">
+            <p className="text-[#445361] leading-relaxed">
+              No utilizamos directamente cookies analíticas ni de publicidad en el código de la web. El alojamiento puede emplear recursos técnicos de seguridad. Si decides cargar el mapa, el navegador se conectará a Google Maps, un proveedor externo que podría utilizar cookies u otros mecanismos de tratamiento de datos. Puedes evitarlo utilizando el enlace «Cómo llegar» sin cargar el mapa en esta página.
             </p>
           </div>
         </section>
 
         {/* Modificación */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-extrabold tracking-tight mb-4">
             Modificación de la política
           </h2>
-          <p className="text-white/70 leading-relaxed">
+          <p className="text-[#51616a] leading-relaxed">
             Si en el futuro se incorporan cookies adicionales, se actualizará
             esta política y se solicitará el consentimiento correspondiente,
             conforme a la normativa vigente.

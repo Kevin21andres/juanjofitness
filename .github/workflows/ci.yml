@@ -1,0 +1,32 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - name: Reject vulnerable production dependencies
+        run: npm audit --omit=dev --audit-level=moderate
+      - name: Show dependency risk report
+        if: always()
+        run: |
+          npm audit --json > audit.json || true
+          node - <<'NODE'
+          const report = require('./audit.json');
+          console.log('AUDIT_COUNTS', JSON.stringify(report.metadata?.vulnerabilities || {}));
+          for (const [name, v] of Object.entries(report.vulnerabilities || {})) {
+            console.log('AUDIT_PACKAGE', JSON.stringify({name, severity:v.severity, range:v.range, fixAvailable:v.fixAvailable, direct:v.isDirect, via:v.via.map(x=>typeof x==='string'?x:x.title)}));
+          }
+          NODE
