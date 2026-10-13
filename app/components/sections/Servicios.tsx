@@ -1,41 +1,34 @@
 import Link from "next/link";
-import Reveal from "../ui/Reveal";
 
 const services = [
-  {num:"01",name:"Entrenamiento personal",text:"Sesiones y planificación adaptadas a tu experiencia, disponibilidad y objetivos. Atención al movimiento y a la progresión."},
-  {num:"02",name:"Transformación corporal",text:"Pérdida de grasa, ganancia muscular y recomposición corporal con hábitos que se puedan sostener."},
-  {num:"03",name:"Preparación para competir",text:"Planificación por fases, ajustes y acompañamiento para quienes se preparan para subir al escenario."},
-  {num:"04",name:"Seguimiento online",text:"Entrena desde donde estés con revisiones periódicas y cambios en tu programa cuando sean necesarios."},
-  {num:"05",name:"Nutrición deportiva",text:"Planificación de hábitos y pautas nutricionales orientadas al entrenamiento y a tus objetivos individuales."},
-  {num:"06",name:"Rendimiento deportivo",text:"Trabajo de fuerza, condición física y progresión para mejorar tu capacidad de entrenar."},
+  {number:"01",title:"ENTRENAMIENTO PERSONAL",detail:"Presencial en Tarragona o a distancia. Técnica, progresión y una planificación ajustada a tu vida.",types:"FUERZA / PLANIFICACIÓN / EVOLUCIÓN"},
+  {number:"02",title:"TRANSFORMACIÓN CORPORAL",detail:"Pérdida de grasa, ganancia muscular y mejora de composición corporal con hábitos sostenibles.",types:"NUTRICIÓN / RUTINAS / SEGUIMIENTO"},
+  {number:"03",title:"PREPARACIÓN PARA COMPETIR",detail:"Trabajo por fases, planificación avanzada y acompañamiento para objetivos competitivos.",types:"ALTO RENDIMIENTO / COMPETICIÓN"},
+  {number:"04",title:"SEGUIMIENTO ONLINE",detail:"Revisiones periódicas, ajustes y comunicación para entrenar con rumbo estés donde estés.",types:"A DISTANCIA / REVISIÓN / CONTROL"},
 ];
 
 export default function Servicios() {
   return (
-    <section id="servicios" className="bg-white text-[#101820]">
+    <section id="servicios" className="bg-white text-[#0b1115]">
       <div className="site-container section-space">
-        <div className="grid gap-7 lg:grid-cols-[1fr_.8fr] lg:items-end lg:gap-20">
-          <Reveal>
-            <p className="kicker">02 / Qué hacemos</p>
-            <h2 className="section-heading mt-5 max-w-2xl">Un entrenamiento a la altura de tu objetivo.</h2>
-          </Reveal>
-          <p className="body-copy max-w-xl text-[#52616b]">No existe un único camino para progresar. Elegimos las herramientas que necesitas y las adaptamos a tu realidad.</p>
+        <div className="grid gap-9 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-18">
+          <div><p className="kicker">02 / SERVICIOS</p><h2 className="section-heading mt-6">UN OBJETIVO.<br/><span className="text-[#077c92]">TU CAMINO.</span></h2></div>
+          <p className="body-copy max-w-xl text-[#53636a]">No trabajamos con soluciones iguales para todo el mundo. El punto de partida, tu contexto y el objetivo determinan cada programa.</p>
         </div>
-        <div className="mt-14 grid border-l border-t border-[#dce1e2] sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(service => (
-            <div key={service.num} className="group flex min-h-[260px] flex-col border-b border-r border-[#dce1e2] p-7 transition-colors hover:bg-[#f6f6f3] sm:p-8">
-              <span className="text-xs font-extrabold tracking-[.16em] text-[#1684d4]">{service.num}</span>
-              <h3 className="mt-9 text-xl font-extrabold leading-snug tracking-tight">{service.name}</h3>
-              <p className="mt-4 text-sm leading-7 text-[#52616b]">{service.text}</p>
+        <div className="mt-15 border-t-2 border-[#0b1115]">
+          {services.map(s=><div key={s.number} className="group grid gap-5 border-b border-[#d6d9d4] py-9 transition-colors hover:bg-[#f6f7f4] md:grid-cols-[60px_minmax(0,1.3fr)_minmax(0,.7fr)] md:items-center md:gap-6 lg:py-12">
+            <span className="text-[11px] font-extrabold tracking-[.16em] text-[#077c92]">{s.number} /</span>
+            <h3 className="max-w-2xl text-[clamp(1.7rem,3.3vw,3.3rem)] font-black leading-[1.09] tracking-[-.06em] transition-colors group-hover:text-[#077c92]">{s.title}</h3>
+            <div className="md:pl-6">
+              <p className="max-w-md text-sm font-medium leading-7 text-[#4b5c65]">{s.detail}</p>
+              <span className="mt-4 block text-[10px] font-extrabold tracking-[.11em] text-[#077c92]">{s.types}</span>
             </div>
-          ))}
+          </div>)}
         </div>
-        <Reveal>
-          <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm font-semibold text-[#52616b]">¿No sabes qué programa encaja contigo?</p>
-            <Link href="/#contacto" className="action-dark">Cuéntame tu objetivo <span aria-hidden="true">↗</span></Link>
-          </div>
-        </Reveal>
+        <div className="mt-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+          <p className="text-sm font-semibold leading-6 text-[#4b5c65]">¿No sabes cuál es el mejor punto de partida?</p>
+          <Link href="/#contacto" className="action-dark">HABLEMOS DE TU CASO <span aria-hidden="true">↗</span></Link>
+        </div>
       </div>
     </section>
   );

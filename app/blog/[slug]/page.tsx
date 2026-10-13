@@ -38,22 +38,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound();
 
   return (
-    <main className="min-h-screen bg-[#f6f6f3] pt-[var(--header-height)] text-[#101820]">
+    <main className="min-h-screen bg-[#f2f0ea] pt-[var(--header-height)] text-[#0b1115]">
       <article>
         <header className="site-container max-w-[1000px] py-14 sm:py-20">
-          <Link href="/blog" className="inline-flex items-center gap-3 text-sm font-extrabold text-[#0967af] hover:underline">← Volver al blog</Link>
+          <Link href="/blog" className="inline-flex items-center gap-3 text-sm font-extrabold text-[#077c92] hover:underline">← Volver al blog</Link>
           <div className="mt-9 flex flex-wrap gap-3 text-xs font-extrabold uppercase tracking-[.12em]">
-            <span className="text-[#1684d4]">{post.category}</span><span className="text-[#a7afb4]">/</span>
-            <time dateTime={post.date} className="text-[#63707c]">{post.date}</time>
+            <span className="text-[#077c92]">{post.category}</span><span className="text-[#a7afb4]">/</span>
+            <time dateTime={post.date} className="text-[#5a696f]">{post.date}</time>
           </div>
-          <h1 className="mt-5 max-w-[920px] text-[clamp(2.2rem,5.3vw,4.8rem)] font-extrabold leading-[1.08] tracking-[-.055em]">{post.title}</h1>
-          <p className="mt-7 max-w-[760px] text-lg leading-8 text-[#52616b]">{post.excerpt}</p>
-          <p className="mt-7 border-t border-[#d6dddf] pt-5 text-sm font-bold">Por {post.author}</p>
+          <h1 className="mt-5 max-w-[920px] text-[clamp(2.5rem,6vw,5.4rem)] font-black leading-[1.08] tracking-[-.055em]">{post.title}</h1>
+          <p className="mt-7 max-w-[760px] text-lg leading-8 text-[#51616a]">{post.excerpt}</p>
+          <p className="mt-7 border-t border-[#d1d5d2] pt-5 text-sm font-bold">Por {post.author}</p>
         </header>
 
         {post.cover && (
           <div className="site-container max-w-[1120px]">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#dce1e2] sm:aspect-[16/8]">
+            <div className="relative aspect-[16/10] overflow-hidden bg-[#d7d8d2] sm:aspect-[16/8]">
               <Image src={mediaUrl(post.cover)} alt={post.title} fill
                 unoptimized={post.cover.startsWith("/blog/uploads/")} priority
                 sizes="(max-width: 1120px) 100vw, 1120px" className="object-cover" />
@@ -64,13 +64,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="site-container max-w-[770px] pb-20 pt-12 sm:pb-28 sm:pt-16">
           <Markdown body={post.body}/>
           {post.tags.length > 0 &&
-            <div className="mt-12 flex flex-wrap gap-2 border-t border-[#d6dddf] pt-7">
-              {post.tags.map(tag => <span key={tag} className="border border-[#d6dddf] px-3 py-2 text-xs font-bold text-[#52616b]">{tag}</span>)}
+            <div className="mt-12 flex flex-wrap gap-2 border-t border-[#d1d5d2] pt-7">
+              {post.tags.map(tag => <span key={tag} className="border border-[#d1d5d2] px-3 py-2 text-xs font-bold text-[#51616a]">{tag}</span>)}
             </div>
           }
-          <div className="mt-15 border-t border-[#d6dddf] pt-10">
+          <div className="mt-15 border-t border-[#d1d5d2] pt-10">
             <h2 className="text-2xl font-extrabold tracking-tight">¿Quieres ponerlo en práctica?</h2>
-            <p className="mt-4 text-sm leading-7 text-[#52616b]">Hablemos de un plan adaptado a tus objetivos.</p>
+            <p className="mt-4 text-sm leading-7 text-[#51616a]">Hablemos de un plan adaptado a tus objetivos.</p>
             <Link href="/#contacto" className="action-dark mt-7">Hablar con Juanjo <span aria-hidden="true">↗</span></Link>
           </div>
         </div>

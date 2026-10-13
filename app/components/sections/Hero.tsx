@@ -3,39 +3,43 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="overflow-hidden bg-[#101820] pt-[var(--header-height)] text-white" aria-labelledby="hero-title">
-      <div className="site-container grid min-h-[650px] items-stretch gap-10 pb-12 pt-14 md:min-h-[730px] md:grid-cols-[1.1fr_.9fr] md:gap-14 md:pb-16 md:pt-20 lg:gap-20">
-        <div className="flex flex-col justify-center py-4">
-          <p className="kicker kicker-light">Juanjo Hidalgo · Preparación física</p>
-          <h1 id="hero-title" className="display-heading mt-7 max-w-[720px]">
-            El progreso <span className="text-[#83c9fb]">no se improvisa.</span>
-          </h1>
-          <p className="body-copy mt-8 max-w-lg text-white/70">
-            Entrenamiento y planificación adaptados a ti. Sin rutinas copiadas ni promesas rápidas: un plan claro, seguimiento y trabajo constante.
-          </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link href="/#tarifas" className="action-primary">Ver programas <span aria-hidden="true">↗</span></Link>
-            <Link href="/#metodo" className="action-outline">Conoce el método <span aria-hidden="true">↓</span></Link>
+    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-[#0b1115] pt-[var(--header-height)] text-white">
+      <div className="relative grid min-h-[680px] grid-cols-1 lg:min-h-[min(850px,calc(100svh-82px))] lg:grid-cols-[57%_43%]">
+        <div className="relative z-10 flex flex-col justify-center px-[max(25px,calc((100vw-1450px)/2))] pb-16 pt-22 sm:px-11 lg:px-14 lg:py-16 xl:pl-[max(44px,calc((100vw-1450px)/2))] xl:pr-6">
+          <div className="flex items-center gap-4 text-[10px] font-extrabold uppercase tracking-[.18em] text-white/65">
+            <span className="h-[2px] w-9 bg-[#1ad8ec]"/><span>JUANJO HIDALGO / TARRAGONA + ONLINE</span>
           </div>
-          <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/15 pt-6 text-[13px] font-semibold text-white/65">
-            <span><span className="mr-2 text-[#83c9fb]" aria-hidden="true">●</span> Tarragona</span>
-            <span><span className="mr-2 text-[#83c9fb]" aria-hidden="true">●</span> Asesoramiento online</span>
+          <h1 id="hero-title" className="mt-13 text-[clamp(3.55rem,8.4vw,10rem)] font-black leading-[.90] tracking-[-.095em] max-sm:mt-11 max-sm:text-[clamp(3.3rem,14.3vw,5.3rem)] lg:mt-14">
+            ENTRENA.<br/><span className="text-[#1ad8ec]">PROGRESA.</span><br/>REPITE.
+          </h1>
+          <div className="mt-11 max-w-[590px] border-l-[2px] border-[#1ad8ec] pl-5 sm:pl-7">
+            <p className="max-w-xl text-[clamp(1rem,1.7vw,1.25rem)] font-medium leading-[1.7] text-white/80">Tu cuerpo no necesita otra rutina genérica. Necesita un plan diseñado para ti, seguimiento real y alguien que sepa cuándo ajustar.</p>
+          </div>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link href="/#contacto" className="action-primary">QUIERO EMPEZAR <span aria-hidden="true">↗</span></Link>
+            <Link href="/#metodo" className="action-outline">VER EL MÉTODO <span aria-hidden="true">↓</span></Link>
+          </div>
+          <div className="mt-13 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/20 pt-5 text-xs font-bold text-white/55">
+            <span><strong className="mr-2 text-lg font-black text-white">10+</strong>Años de experiencia</span>
+            <span>Entrenamiento presencial <span className="text-[#1ad8ec]">/</span> online</span>
           </div>
         </div>
-        <div className="relative min-h-[400px] overflow-hidden bg-[#27323a] md:min-h-[580px]">
-          <Image
-            src="/sobrejuanjo/sobrejuanjo.webp"
-            alt="Retrato de Juanjo Hidalgo, entrenador y preparador físico"
-            fill priority
-            sizes="(max-width: 767px) 100vw, (max-width: 1200px) 44vw, 540px"
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#101820]/90 via-[#101820]/15 to-transparent p-6 pt-24 sm:p-8 sm:pt-32">
-            <div className="flex items-end justify-between gap-3 border-t border-white/35 pt-5">
-              <p className="text-sm font-bold">JJHP <span className="font-medium text-white/75">/ Entrenamiento con criterio</span></p>
-              <span className="text-xs font-bold tracking-[.13em] text-white/80">TARRAGONA</span>
-            </div>
+        <div className="relative min-h-[420px] overflow-hidden bg-[#26282a] lg:min-h-0">
+          <Image src="/sobrejuanjo/sobrejuanjo.webp" alt="Juanjo Hidalgo, entrenador personal, en su centro de entrenamiento" fill priority
+            sizes="(max-width:1023px) 100vw, 43vw"
+            className="object-cover object-[center_30%] grayscale"/>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1115]/85 via-transparent to-[#0b1115]/15"/>
+          <span aria-hidden="true" className="pointer-events-none absolute -left-1 bottom-5 hidden select-none text-[clamp(8rem,19vw,22rem)] font-black leading-none tracking-[-.12em] text-white/8 mix-blend-overlay lg:block">JJ</span>
+          <div className="absolute bottom-7 left-7 right-7 flex items-end justify-between border-t border-white/55 pt-4 text-[10px] font-black uppercase tracking-[.16em] text-white sm:left-12 sm:right-12">
+            <span>THE WORK IS THE WAY.</span><span>JJHP ©</span>
           </div>
+        </div>
+      </div>
+      <div className="border-t border-white/15 bg-[#11191e]">
+        <div className="site-container grid gap-4 py-5 text-[10px] font-extrabold uppercase tracking-[.12em] text-white/55 sm:grid-cols-3 sm:gap-6">
+          <div className="flex justify-between gap-4 sm:justify-start"><span className="text-[#1ad8ec]">01</span><span>Entrenamiento individualizado</span></div>
+          <div className="flex justify-between gap-4 sm:justify-start"><span className="text-[#1ad8ec]">02</span><span>Planificación con criterio</span></div>
+          <div className="flex justify-between gap-4 sm:justify-start"><span className="text-[#1ad8ec]">03</span><span>Progreso con seguimiento</span></div>
         </div>
       </div>
     </section>

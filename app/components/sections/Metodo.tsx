@@ -1,34 +1,25 @@
-import Reveal from "../ui/Reveal";
-
-const steps = [
-  {number:"01",title:"Primero, entenderte",text:"Hablamos de tu nivel, tu disponibilidad, tus hábitos y del resultado que quieres conseguir."},
-  {number:"02",title:"Después, planificar",text:"Organizamos el entrenamiento y las pautas de trabajo para que tengas una dirección concreta."},
-  {number:"03",title:"Medir y ajustar",text:"Revisamos cómo avanzas. Cambiamos lo que haga falta según la respuesta de tu cuerpo y tu día a día."},
-  {number:"04",title:"Construir continuidad",text:"Buscamos hábitos y decisiones que te permitan mantener el progreso más allá de una semana."},
+const phases = [
+  {number:"01",name:"ESCUCHAR",body:"Entender tu situación, tus hábitos, el tiempo que tienes y hasta dónde quieres llegar."},
+  {number:"02",name:"PLANIFICAR",body:"Elegir qué hacer, cuándo y con qué intensidad. Un programa con una lógica clara."},
+  {number:"03",name:"REVISAR",body:"Analizar cómo respondes y ajustar entrenamiento y pautas cuando sea necesario."},
+  {number:"04",name:"AVANZAR",body:"Convertir las buenas decisiones en continuidad. Trabajar hoy pensando en mañana."},
 ];
 
-export default function Metodo() {
-  return (
-    <section id="metodo" className="bg-[#101820] text-white">
-      <div className="site-container section-space">
-        <Reveal>
-          <p className="kicker kicker-light">03 / El método JJHP</p>
-          <div className="mt-5 grid gap-7 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-24">
-            <h2 className="section-heading">El plan importa. <span className="text-[#83c9fb]">El seguimiento, más.</span></h2>
-            <p className="body-copy text-white/65">La diferencia no está en entrenar más por entrenar. Está en saber por qué haces cada cosa y cómo evoluciona tu programa.</p>
-          </div>
-        </Reveal>
-        <div className="mt-16 grid border-t border-white/20 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((item, index) => (
-            <div key={item.number} className="border-b border-white/20 py-9 sm:pr-8 lg:border-b-0 lg:border-r lg:px-7 lg:first:pl-0 lg:last:border-r-0">
-              <span className="text-sm font-extrabold text-[#83c9fb]">{item.number} /</span>
-              <h3 className="mt-10 text-xl font-bold tracking-tight">{item.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-white/60">{item.text}</p>
-              {index === 3 && <span className="sr-only">Última fase</span>}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+export default function Metodo(){
+ return <section id="metodo" className="overflow-hidden bg-[#10191f] text-white">
+   <div className="site-container section-space grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-26">
+     <div className="lg:sticky lg:top-32 lg:self-start">
+       <p className="kicker kicker-light">03 / EL MÉTODO</p>
+       <h2 className="section-heading mt-7">MENOS RUIDO.<br/><span className="text-[#1ad8ec]">MÁS SENTIDO.</span></h2>
+       <p className="body-copy mt-8 max-w-lg text-white/60">No necesitas un plan espectacular sobre el papel. Necesitas uno que funcione contigo, que se pueda seguir y que evolucione.</p>
+       <div className="mt-11 flex items-center gap-5 border-t border-white/20 pt-7 text-[10px] font-black uppercase tracking-[.18em] text-[#1ad8ec]"><span className="h-[2px] w-9 bg-[#1ad8ec]"/> CADA PASO TIENE UN PORQUÉ.</div>
+     </div>
+     <ol className="border-t border-white/25">
+       {phases.map(phase=><li key={phase.number} className="grid gap-5 border-b border-white/25 py-9 sm:grid-cols-[80px_1fr] sm:gap-6 lg:py-11">
+         <span className="text-4xl font-black tracking-[-.07em] text-[#1ad8ec]">{phase.number}</span>
+         <div><h3 className="text-[clamp(2rem,3.6vw,3.9rem)] font-black leading-none tracking-[-.065em]">{phase.name}</h3><p className="mt-5 max-w-md text-base leading-8 text-white/60">{phase.body}</p></div>
+       </li>)}
+     </ol>
+   </div>
+ </section>;
 }
