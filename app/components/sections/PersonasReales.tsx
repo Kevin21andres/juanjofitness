@@ -1,86 +1,37 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "../ui/Reveal";
+
+const gallery = [
+  "persona1.webp","persona2.webp","persona3.webp",
+  "persona4.webp","persona5.webp","persona6.webp",
+];
 
 export default function PersonasReales() {
   return (
-    <section
-      id="personas"
-      className="relative bg-black text-white"
-    >
-      <div className="mx-auto max-w-7xl px-6 pt-20 pb-28 sm:px-8 lg:px-12">
-
-        {/* Heading */}
-        <div className="max-w-3xl">
-          <Reveal>
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-              Personas reales.{" "}
-              <span className="text-[#1E90FF]">Resultados reales.</span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed">
-              Transformaciones construidas con método, disciplina y seguimiento
-              profesional. Sin filtros. Sin atajos. Solo trabajo real.
-            </p>
-          </Reveal>
-        </div>
-
-        {/* Galería */}
-        <div className="mt-16 lg:mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            "persona1.webp",
-            "persona2.webp",
-            "persona3.webp",
-            "persona4.webp",
-            "persona5.webp",
-            "persona6.webp",
-          ].map((img, i) => (
-            <Reveal key={img} delay={0.1 + i * 0.05}>
-              <div className="group relative overflow-hidden rounded-2xl bg-neutral-900 shadow-2xl shadow-black/50">
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={`/personas/${img}`}
-                    alt="Transformación real JJHP"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-
-                {/* Overlay elegante */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-
-                {/* Micro detalle */}
-                <div className="absolute bottom-4 left-4 text-xs text-white/80 opacity-0 transition duration-500 group-hover:opacity-100">
-                  Progreso real · Método JJHP
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* CTA Section */}
-        <Reveal delay={0.3}>
-          <div className="mt-28 text-center">
-            <h3 className="text-2xl font-bold">
-              Tu transformación puede ser la siguiente.
-            </h3>
-
-            <p className="mt-4 text-white/60">
-              Si estás dispuesto a comprometerte, el método se encarga del resto.
-            </p>
-
-            <div className="mt-8">
-              <a
-                href="#contacto"
-                className="inline-flex h-13 items-center justify-center rounded-full bg-[#1E90FF] px-10 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(30,144,255,0.35)] transition hover:bg-[#187bcd] hover:shadow-[0_10px_40px_rgba(30,144,255,0.45)]"              >
-                Empieza hoy
-              </a>
+    <section id="personas" className="bg-[#f6f6f3] text-[#101820]">
+      <div className="site-container section-space">
+        <Reveal>
+          <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <p className="kicker">04 / Progreso real</p>
+              <h2 className="section-heading mt-5">El trabajo se ve.</h2>
             </div>
+            <p className="body-copy max-w-md text-[#52616b]">Personas, procesos y cambios que no suceden de un día para otro. La constancia cuenta.</p>
           </div>
         </Reveal>
-
+        <div className="mt-12 grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3">
+          {gallery.map((image, index) => (
+            <figure key={image} className="relative aspect-[3/4] overflow-hidden bg-[#dbe0e2]">
+              <Image src={"/personas/" + image} alt={"Galería de resultados de entrenamiento, fotografía " + (index + 1)} fill
+                sizes="(max-width: 639px) 50vw, (max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-500 hover:scale-[1.035]" />
+            </figure>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-col gap-6 border-t border-[#d1dadd] pt-8 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-xl text-sm leading-7 text-[#52616b]">Cada proceso es diferente. Hablemos del tuyo y de cómo podemos empezar.</p>
+          <Link href="/#contacto" className="action-dark shrink-0">Quiero empezar <span aria-hidden="true">↗</span></Link>
+        </div>
       </div>
     </section>
   );

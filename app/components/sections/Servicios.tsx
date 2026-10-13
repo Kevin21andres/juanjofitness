@@ -1,124 +1,39 @@
-import Reveal from "../ui/Reveal";
 import Link from "next/link";
+import Reveal from "../ui/Reveal";
+
+const services = [
+  {num:"01",name:"Entrenamiento personal",text:"Sesiones y planificación adaptadas a tu experiencia, disponibilidad y objetivos. Atención al movimiento y a la progresión."},
+  {num:"02",name:"Transformación corporal",text:"Pérdida de grasa, ganancia muscular y recomposición corporal con hábitos que se puedan sostener."},
+  {num:"03",name:"Preparación para competir",text:"Planificación por fases, ajustes y acompañamiento para quienes se preparan para subir al escenario."},
+  {num:"04",name:"Seguimiento online",text:"Entrena desde donde estés con revisiones periódicas y cambios en tu programa cuando sean necesarios."},
+  {num:"05",name:"Nutrición deportiva",text:"Planificación de hábitos y pautas nutricionales orientadas al entrenamiento y a tus objetivos individuales."},
+  {num:"06",name:"Rendimiento deportivo",text:"Trabajo de fuerza, condición física y progresión para mejorar tu capacidad de entrenar."},
+];
 
 export default function Servicios() {
   return (
-    <section id="servicios" className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32">
-        {/* Heading */}
-        <div className="max-w-3xl">
+    <section id="servicios" className="bg-white text-[#101820]">
+      <div className="site-container section-space">
+        <div className="grid gap-7 lg:grid-cols-[1fr_.8fr] lg:items-end lg:gap-20">
           <Reveal>
-            <h2 className="text-3xl font-extrabold tracking-tight text-[#0B0B0B] sm:text-4xl">
-              Servicios de entrenamiento personal en{" "}
-              <span className="text-[#1E90FF]">Tarragona</span>
-            </h2>
+            <p className="kicker">02 / Qué hacemos</p>
+            <h2 className="section-heading mt-5 max-w-2xl">Un entrenamiento a la altura de tu objetivo.</h2>
           </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="mt-6 text-lg text-gray-600">
-              Programas de entrenamiento y preparación física adaptados a tu
-              nivel, objetivos y contexto real. Trabajo individual, seguimiento
-              continuo y resultados medibles.
-            </p>
-          </Reveal>
+          <p className="body-copy max-w-xl text-[#52616b]">No existe un único camino para progresar. Elegimos las herramientas que necesitas y las adaptamos a tu realidad.</p>
         </div>
-
-        {/* Servicios */}
-        <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Servicio 1 */}
-          <Reveal delay={0.1}>
-            <div className="h-full rounded-xl border border-black/5 p-6 transition hover:shadow-sm">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Entrenamiento personal
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Sesiones individuales en centro físico en Tarragona o modalidad
-                online. Planificación personalizada, control técnico y
-                progresión real.
-              </p>
+        <div className="mt-14 grid border-l border-t border-[#dce1e2] sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(service => (
+            <div key={service.num} className="group flex min-h-[260px] flex-col border-b border-r border-[#dce1e2] p-7 transition-colors hover:bg-[#f6f6f3] sm:p-8">
+              <span className="text-xs font-extrabold tracking-[.16em] text-[#1684d4]">{service.num}</span>
+              <h3 className="mt-9 text-xl font-extrabold leading-snug tracking-tight">{service.name}</h3>
+              <p className="mt-4 text-sm leading-7 text-[#52616b]">{service.text}</p>
             </div>
-          </Reveal>
-
-          {/* Servicio 2 */}
-          <Reveal delay={0.2}>
-            <div className="h-full rounded-xl border border-black/5 p-6 transition hover:shadow-sm">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Transformación corporal
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Programas enfocados en pérdida de grasa, mejora estética y
-                recomposición corporal. Método sostenible, sin soluciones
-                rápidas ni promesas vacías.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Servicio 3 */}
-          <Reveal delay={0.3}>
-            <div className="h-full rounded-xl border border-black/5 p-6 transition hover:shadow-sm">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Preparación para competición
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Preparación específica para atletas y competidores. Control del
-                entrenamiento, planificación avanzada y acompañamiento durante
-                todo el proceso competitivo.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Servicio 4 */}
-          <Reveal delay={0.4}>
-            <div className="h-full rounded-xl border border-black/5 p-6 transition hover:shadow-sm">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Seguimiento online
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Entrenamiento y control a distancia con revisiones periódicas,
-                ajustes personalizados y contacto directo. Ideal si no puedes
-                entrenar de forma presencial.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Servicio 5 */}
-          <Reveal delay={0.5}>
-            <div className="h-full rounded-xl border border-black/5 p-6 transition hover:shadow-sm">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Asesoramiento en suplementación
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Orientación profesional en suplementación deportiva de calidad,
-                adaptada a tu objetivo y contexto. Distribuidor oficial de
-                Procell Sport.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Servicio 6 */}
-          <Reveal delay={0.6}>
-            <div className="h-full rounded-xl border border-black/5 p-6 transition hover:shadow-sm">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Readaptación y mejora del rendimiento
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Trabajo enfocado en volver a entrenar con seguridad, mejorar
-                capacidades físicas y optimizar el rendimiento deportivo a
-                medio y largo plazo.
-              </p>
-            </div>
-          </Reveal>
+          ))}
         </div>
-
-        {/* CTA */}
-        <Reveal delay={0.2}>
-          <div className="mt-16 text-center">
-            <Link
-              href="#contacto"
-              className="inline-block rounded-md bg-[#1E90FF] px-10 py-4 font-semibold text-white hover:bg-[#187bcd] transition"
-            >
-              Solicitar información
-            </Link>
+        <Reveal>
+          <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm font-semibold text-[#52616b]">¿No sabes qué programa encaja contigo?</p>
+            <Link href="/#contacto" className="action-dark">Cuéntame tu objetivo <span aria-hidden="true">↗</span></Link>
           </div>
         </Reveal>
       </div>

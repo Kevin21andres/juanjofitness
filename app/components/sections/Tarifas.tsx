@@ -1,159 +1,64 @@
-const WHATSAPP = "https://wa.me/34649833960";
+import Link from "next/link";
 
-const waLink = (msg: string) => `${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+const plans = [
+  {
+    name: "Nutrición + Rutina",
+    level: "Plan de seguimiento",
+    price: "40",
+    subtitle: "Para empezar o seguir progresando con un programa adaptado.",
+    features: ["Pautas nutricionales personalizadas", "Rutina de entrenamiento adaptada", "Revisión y ajustes según evolución", "Soporte por WhatsApp"],
+    action: "Consultar este plan",
+    message: "Hola Juanjo, me interesa el plan Nutrición + Rutina de 40 € al mes. ¿Podemos hablar?",
+  },
+  {
+    name: "Plan Competidor",
+    level: "Preparación específica",
+    price: "60",
+    subtitle: "Para personas con objetivos deportivos más exigentes.",
+    features: ["Planificación nutricional por fases", "Entrenamiento avanzado", "Ajustes según el calendario de preparación", "Seguimiento más cercano"],
+    action: "Consultar preparación",
+    message: "Hola Juanjo, me interesa el Plan Competidor de 60 € al mes. ¿Podemos hablar?",
+  },
+];
 
 export default function Tarifas() {
   return (
-    <section id="tarifas" className="relative bg-slate-50 border-t border-black/5">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32">
-        {/* Heading */}
-        <div className="max-w-2xl">
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
-            Tarifas
-          </h2>
-          <p className="mt-5 text-lg text-slate-600 leading-relaxed">
-            Precios claros, sin permanencias y con seguimiento real. Si tienes un
-            objetivo concreto, lo vemos sin compromiso.
-          </p>
-
-          <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-slate-500">
-            Transparente · Personalizado · Medible
-          </p>
-        </div>
-
-        {/* Cards */}
-        <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2">
-          {/* 40€ */}
-          <div className="group relative overflow-hidden rounded-3xl border border-black/5 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_45px_rgba(2,6,23,0.10)]">
-            <div className="flex items-start justify-between gap-6">
-              <div>
-                <h3 className="text-xl font-semibold text-slate-900">
-                  Nutrición + Rutina
-                </h3>
-                <p className="mt-2 text-sm text-slate-500">
-                  Ideal si quieres mejorar composición corporal.
-                </p>
-              </div>
-
-              <div className="text-right">
-                <p className="text-4xl font-extrabold text-slate-900 leading-none">
-                  40<span className="ml-1 text-lg font-semibold text-slate-500">€</span>
-                </p>
-                <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                  / mes
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-7 h-px w-full bg-black/5" />
-
-            <ul className="mt-7 space-y-3 text-slate-700">
-              <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-900/70" />
-                <span>Plan nutricional personalizado</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-900/70" />
-                <span>Rutina de entrenamiento adaptada</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-900/70" />
-                <span>Ajustes según evolución</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-900/70" />
-                <span>Soporte por WhatsApp</span>
-              </li>
-            </ul>
-
-            <a
-              href={waLink("Hola Juanjo, me interesa la tarifa de 40€ (Nutrición + Rutina)")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex h-12 w-full items-center justify-center rounded-full bg-slate-900 px-6 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/30"
-            >
-              Quiero esta tarifa
-            </a>
-
-            <p className="mt-4 text-xs text-slate-500">
-              Respuesta rápida por WhatsApp.
-            </p>
+    <section id="tarifas" className="bg-white text-[#101820]">
+      <div className="site-container section-space">
+        <div className="grid gap-6 md:grid-cols-[1fr_.8fr] md:items-end md:gap-12">
+          <div>
+            <p className="kicker">05 / Tarifas</p>
+            <h2 className="section-heading mt-5">Precios claros. Un plan a tu medida.</h2>
           </div>
-
-          {/* 60€ (destacada) */}
-          <div className="group relative overflow-hidden rounded-3xl border border-[#1E90FF]/30 bg-white p-8 shadow-[0_12px_40px_rgba(30,144,255,0.12)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_55px_rgba(30,144,255,0.18)]">
-            {/* Glow */}
-            <div className="pointer-events-none absolute -top-24 right-[-80px] h-64 w-64 rounded-full bg-[#1E90FF]/15 blur-3xl" />
-
-            {/* Badge */}
-            <div className="absolute left-7 top-7 inline-flex items-center gap-2 rounded-full border border-[#1E90FF]/25 bg-[#1E90FF]/10 px-3 py-1 text-xs font-semibold text-[#1E90FF]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
-              Recomendado
-            </div>
-
-            <div className="pt-8">
-              <div className="flex items-start justify-between gap-6">
+          <p className="body-copy text-[#52616b]">Elige el punto de partida. Antes de comenzar, hablamos de tus objetivos y resolvemos cualquier duda.</p>
+        </div>
+        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          {plans.map((plan, index) => (
+            <article key={plan.price} className={"flex flex-col border p-7 sm:p-10 " + (index === 1 ? "border-[#1684d4] bg-[#f1f8fd]" : "border-[#dce1e2] bg-[#fbfbfa]")}>
+              <div className="flex flex-wrap items-start justify-between gap-5">
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    Nutrición + Rutina <span className="text-slate-500">(Competidor)</span>
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-500">
-                    Para alto rendimiento y objetivos exigentes.
-                  </p>
+                  <p className="text-xs font-extrabold uppercase tracking-[.17em] text-[#1684d4]">{plan.level}</p>
+                  <h3 className="mt-4 text-2xl font-extrabold tracking-tight">{plan.name}</h3>
                 </div>
-
-                <div className="text-right">
-                  <p className="text-4xl font-extrabold text-[#1E90FF] leading-none">
-                    60<span className="ml-1 text-lg font-semibold text-slate-500">€</span>
-                  </p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                    / mes
-                  </p>
-                </div>
+                <p className="text-right"><span className="text-[3.4rem] font-extrabold leading-none tracking-[-.07em]">{plan.price} €</span><span className="block pt-1 text-xs font-bold text-[#647481]">al mes</span></p>
               </div>
-
-              <div className="mt-7 h-px w-full bg-black/5" />
-
-              <ul className="mt-7 space-y-3 text-slate-700">
-                <li className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
-                  <span>Nutrición específica de competición</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
-                  <span>Rutina avanzada de alto rendimiento</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
-                  <span>Estrategia por fases (volumen / definición)</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
-                  <span>Seguimiento más cercano</span>
-                </li>
+              <p className="mt-6 max-w-md text-sm leading-7 text-[#52616b]">{plan.subtitle}</p>
+              <ul className="mt-8 flex-1 space-y-4 border-t border-[#dce1e2] pt-7">
+                {plan.features.map(feature => (
+                  <li key={feature} className="flex gap-3 text-sm font-medium leading-6">
+                    <span aria-hidden="true" className="shrink-0 font-extrabold text-[#1684d4]">✓</span>{feature}
+                  </li>
+                ))}
               </ul>
-
-              <a
-                href={waLink("Hola Juanjo, me interesa la tarifa de 60€ (Competidor)")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-10 inline-flex h-12 w-full items-center justify-center rounded-full bg-[#1E90FF] px-6 text-sm font-semibold text-white shadow-lg shadow-[#1E90FF]/20 transition hover:bg-[#187bcd] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E90FF]/30"
-              >
-                Quiero esta tarifa
-              </a>
-
-              <p className="mt-4 text-xs text-slate-500">
-                Te digo si encaja contigo en 2 minutos.
-              </p>
-            </div>
-          </div>
+              <Link href={"https://wa.me/34649833960?text=" + encodeURIComponent(plan.message)}
+                target="_blank" rel="noopener noreferrer"
+                className={(index === 1 ? "action-primary" : "action-dark") + " mt-10 w-full"}>
+                {plan.action} <span aria-hidden="true">↗</span>
+              </Link>
+            </article>
+          ))}
         </div>
-
-        {/* Nota inferior */}
-        <p className="mt-10 text-sm text-slate-500">
-          * Si estás preparando una competición o tienes un objetivo muy específico,
-          escríbeme y lo valoramos de forma personalizada.
-        </p>
+        <p className="mt-7 max-w-3xl text-sm leading-7 text-[#63707c]">Los programas se personalizan según tu situación. Para necesidades específicas, escríbeme y valoramos la mejor opción.</p>
       </div>
     </section>
   );

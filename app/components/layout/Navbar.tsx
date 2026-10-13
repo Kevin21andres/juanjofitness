@@ -1,190 +1,81 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-const NAV_ITEMS = [
-  { label: "Método", href: "/#metodo" },
-  { label: "Tarifas", href: "/#tarifas" },
+const navItems = [
+  { name: "Sobre Juanjo", href: "/#sobre-mi" },
+  { name: "Servicios", href: "/#servicios" },
+  { name: "Método", href: "/#metodo" },
+  { name: "Tarifas", href: "/#tarifas" },
+  { name: "Blog", href: "/blog" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Detect scroll
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Lock body scroll when mobile open
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
+    const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onEscape);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onEscape);
     };
   }, [open]);
 
-  // Close on Escape
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
-
-  const headerClass = useMemo(() => {
-    if (!scrolled) return "bg-transparent";
-    return "bg-black/60 backdrop-blur-2xl border-b border-white/10";
-  }, [scrolled]);
-
-  const closeMenu = () => setOpen(false);
-
   return (
-    <>
-      <header
-        className={`fixed top-0 z-50 w-full transition-all duration-300 ${headerClass}`}
-      >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          
-          {/* LOGO */}
-          <Link
-            href="/"
-            className="group rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-            aria-label="Ir a inicio"
-          >
-            <Image
-              src="/logo_jjhp.png"
-              alt="JJHP"
-              width={500}
-              height={250}
-              className="h-11 w-auto opacity-95 transition-opacity group-hover:opacity-100"
-              priority
-            />
+    <header className="fixed inset-x-0 top-0 z-50 h-[var(--header-height)] border-b border-white/10 bg-[#101820]/95 text-white backdrop-blur-md">
+      <div className="site-container flex h-full items-center justify-between gap-8">
+        <Link href="/" onClick={() => setOpen(false)} aria-label="Juanjo Fitness, ir al inicio" className="shrink-0">
+          <Image src="/logo_jjhp.png" alt="Juanjo Fitness" width={240} height={120} sizes="120px" priority className="h-10 w-auto object-contain sm:h-11" />
+        </Link>
+
+        <nav aria-label="Navegación principal" className="hidden items-center gap-7 lg:flex">
+          {navItems.map(item => (
+            <Link key={item.href} href={item.href} className="text-[13px] font-semibold text-white/75 transition-colors hover:text-white">
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <Link href="/#contacto" className="hidden min-h-11 items-center rounded-[4px] bg-[#1684d4] px-5 text-[13px] font-extrabold text-white transition-colors hover:bg-[#0967af] sm:inline-flex">
+            Hablemos <span aria-hidden="true" className="ml-3">↗</span>
           </Link>
-
-          {/* DESKTOP NAV */}
-          <nav className="hidden items-center gap-8 md:flex">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="group relative text-sm font-medium text-white/70 transition hover:text-white"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-white/80 transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
-
-            <Link
-              href="/blog"
-              className="text-sm font-medium text-white/70 transition hover:text-white"
-            >
-              Blog
-            </Link>
-
-            <Link
-              href="/#contacto"
-              className="inline-flex h-10 items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Empieza ahora
-            </Link>
-          </nav>
-
-          {/* MOBILE BUTTON */}
           <button
-            onClick={() => setOpen(true)}
-            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition hover:bg-white/10"
-            aria-label="Abrir menú"
+            type="button"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+            aria-controls="nav-mobile"
+            onClick={() => setOpen(current => !current)}
+            className="flex h-11 w-11 items-center justify-center border border-white/20 lg:hidden"
           >
-            <span className="relative block h-[2px] w-5 bg-white">
-              <span className="absolute -top-2 left-0 h-[2px] w-5 bg-white" />
-              <span className="absolute top-2 left-0 h-[2px] w-5 bg-white" />
-            </span>
+            <span className="sr-only">Menú</span>
+            {open ? <span aria-hidden="true" className="text-2xl leading-none">×</span> :
+              <span aria-hidden="true" className="flex w-5 flex-col gap-[5px]"><span className="h-[2px] bg-white"/><span className="h-[2px] bg-white"/><span className="h-[2px] bg-white"/></span>}
           </button>
         </div>
-      </header>
+      </div>
 
-      {/* MOBILE MENU */}
       {open && (
-        <div className="fixed inset-0 z-[100] md:hidden">
-          
-          {/* Overlay */}
-          <button
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={closeMenu}
-            aria-label="Cerrar menú"
-          />
-
-          {/* BLACK SHEET */}
-          <div className="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-black border-l border-white/10 shadow-2xl animate-slideIn">
-            
-            {/* Header */}
-            <div className="flex h-20 items-center justify-between px-6 border-b border-white/10">
-              <Image
-                src="/logo_jjhp.png"
-                alt="JJHP"
-                width={500}
-                height={250}
-                className="h-9 w-auto"
-              />
-
-              <button
-                onClick={closeMenu}
-                className="text-white text-xl"
-                aria-label="Cerrar menú"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Links */}
-            <div className="px-6 py-8">
-              <div className="flex flex-col gap-6">
-                {NAV_ITEMS.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={closeMenu}
-                    className="text-lg font-semibold text-white/85 transition hover:text-[#1E90FF]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-
-                <Link
-                  href="/blog"
-                  onClick={closeMenu}
-                  className="text-lg font-semibold text-white/85 transition hover:text-[#1E90FF]"
-                >
-                  Blog
-                </Link>
-
-                <div className="mt-4 h-px w-full bg-white/10" />
-
-                <Link
-                  href="/#contacto"
-                  onClick={closeMenu}
-                  className="mt-4 inline-flex h-12 items-center justify-center rounded-full bg-[#1E90FF] px-6 text-sm font-semibold text-white transition hover:bg-[#187bcd]"
-                >
-                  Empieza ahora
-                </Link>
-
-                <p className="mt-4 text-xs text-white/50">
-                  Respuesta rápida por WhatsApp y seguimiento real.
-                </p>
-              </div>
-            </div>
+        <nav id="nav-mobile" aria-label="Menú móvil" className="fixed left-0 right-0 top-[var(--header-height)] z-50 h-[calc(100dvh-var(--header-height))] overflow-y-auto border-t border-white/10 bg-[#101820] p-5 lg:hidden">
+          <div className="mx-auto flex max-w-xl flex-col">
+            {navItems.map((item, index) => (
+              <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-[68px] items-center justify-between border-b border-white/15 text-lg font-bold">
+                {item.name}<span aria-hidden="true" className="text-sm text-[#83c9fb]">{String(index + 1).padStart(2, "0")} ↗</span>
+              </Link>
+            ))}
+            <Link href="/#contacto" onClick={() => setOpen(false)} className="action-primary mt-9 w-full">Solicitar información <span aria-hidden="true">↗</span></Link>
+            <p className="mt-8 text-sm leading-relaxed text-white/50">Preparación física en Tarragona y online.</p>
           </div>
-        </div>
+        </nav>
       )}
-    </>
+    </header>
   );
 }

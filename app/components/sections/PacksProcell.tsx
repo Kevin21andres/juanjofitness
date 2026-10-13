@@ -1,117 +1,42 @@
 import Reveal from "../ui/Reveal";
 
+const packs = [
+  {name:"Inicio",intro:"Una base sencilla para acompañar tus primeros pasos.",items:["Proteína Whey","Creatina","Multivitamínico"]},
+  {name:"Rendimiento",intro:"Opciones orientadas a quienes entrenan con regularidad.",items:["Whey o ISO","Creatina","Pre-entreno"]},
+  {name:"Avanzado",intro:"Una selección para necesidades deportivas específicas.",items:["Proteína ISO","Creatina","Aminoácidos / intra","Recuperación"]},
+];
+
 export default function PacksProcell() {
   return (
-    <section id="packs-procell" className="bg-white border-t border-black/5">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32">
-        {/* Heading */}
-        <div className="max-w-3xl">
-          <Reveal>
-            <h2 className="text-3xl font-extrabold tracking-tight text-[#0B0B0B] sm:text-4xl">
-              Packs Procell recomendados por{" "}
-              <span className="text-[#1E90FF]">JJHP</span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="mt-6 text-lg text-gray-600">
-              Suplementación deportiva seleccionada personalmente para mejorar
-              el rendimiento, acelerar la recuperación y progresar con
-              seguridad. Nada genérico. Solo lo que funciona.
-            </p>
-          </Reveal>
-        </div>
-
-        {/* Packs */}
-        <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Pack 1 */}
-          <Reveal delay={0.1}>
-            <div className="rounded-xl border p-8 hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Pack Inicio
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Ideal para empezar a entrenar con una base sólida.
-              </p>
-
-              <ul className="mt-6 space-y-2 text-sm text-gray-700">
-                <li>✔ Proteína Whey</li>
-                <li>✔ Creatina</li>
-                <li>✔ Multivitamínico</li>
-              </ul>
-
-              <a
-                href="https://wa.me/34649833960"
-                target="_blank"
-                className="mt-8 inline-block rounded-md bg-[#1E90FF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#187bcd] transition"
-              >
-                Consultar pack
-              </a>
+    <section id="packs-procell" className="bg-[#f6f6f3] text-[#101820]">
+      <div className="site-container section-space">
+        <Reveal>
+          <div className="grid gap-6 lg:grid-cols-[1fr_.8fr] lg:items-end lg:gap-16">
+            <div>
+              <p className="kicker">06 / Suplementación</p>
+              <h2 className="section-heading mt-5">Procell Sport. Selección con criterio.</h2>
             </div>
-          </Reveal>
-
-          {/* Pack 2 */}
-          <Reveal delay={0.2}>
-            <div className="rounded-xl border p-8 hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Pack Rendimiento
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Para entrenar fuerte, rendir más y mejorar semana a semana.
-              </p>
-
-              <ul className="mt-6 space-y-2 text-sm text-gray-700">
-                <li>✔ Whey o ISO</li>
-                <li>✔ Creatina</li>
-                <li>✔ Pre-entreno</li>
-              </ul>
-
-              <a
-                href="https://wa.me/34649833960"
-                target="_blank"
-                className="mt-8 inline-block rounded-md bg-[#1E90FF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#187bcd] transition"
-              >
-                Consultar pack
-              </a>
-            </div>
-          </Reveal>
-
-          {/* Pack 3 */}
-          <Reveal delay={0.3}>
-            <div className="rounded-xl border p-8 hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-[#0B0B0B]">
-                Pack Avanzado
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Pensado para atletas, competición y rendimiento exigente.
-              </p>
-
-              <ul className="mt-6 space-y-2 text-sm text-gray-700">
-                <li>✔ Proteína ISO</li>
-                <li>✔ Creatina</li>
-                <li>✔ Aminos / intra</li>
-                <li>✔ Recuperador</li>
-              </ul>
-
-              <a
-                href="https://wa.me/34649833960"
-                target="_blank"
-                className="mt-8 inline-block rounded-md bg-[#1E90FF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#187bcd] transition"
-              >
-                Consultar pack
-              </a>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* Nota legal / confianza */}
-        <Reveal delay={0.4}>
-          <p className="mt-12 text-sm text-gray-500">
-            Packs orientativos. La suplementación se adapta según objetivos,
-            nivel y necesidades individuales. Asesoramiento personal en tienda
-            o por WhatsApp.
-          </p>
+            <p className="body-copy text-[#52616b]">Packs orientativos para consultar con Juanjo. Elegimos productos en función de tu contexto, no por seguir una lista.</p>
+          </div>
         </Reveal>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {packs.map((pack, index) => (
+            <article key={pack.name} className="flex h-full flex-col border border-[#d7dedf] bg-white p-7 sm:p-8">
+              <p className="text-xs font-extrabold tracking-[.16em] text-[#1684d4]">{String(index + 1).padStart(2, "0")} / PACK</p>
+              <h3 className="mt-6 text-2xl font-extrabold tracking-tight">{pack.name}</h3>
+              <p className="mt-4 min-h-12 text-sm leading-7 text-[#52616b]">{pack.intro}</p>
+              <ul className="mt-7 flex-1 space-y-3 border-t border-[#dce1e2] pt-6">
+                {pack.items.map(item => <li key={item} className="flex gap-3 text-sm font-semibold"><span aria-hidden="true" className="text-[#1684d4]">—</span>{item}</li>)}
+              </ul>
+              <a href={"https://wa.me/34649833960?text=" + encodeURIComponent("Hola Juanjo, quiero consultar el Pack " + pack.name + " de Procell Sport.")}
+                target="_blank" rel="noopener noreferrer"
+                className="mt-9 inline-flex min-h-12 items-center justify-between border-t border-[#dce1e2] pt-5 text-sm font-extrabold transition-colors hover:text-[#0967af]">
+                Consultar disponibilidad <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+        <p className="mt-8 max-w-3xl text-sm leading-7 text-[#63707c]">La composición de los packs es orientativa y puede variar. Los suplementos no sustituyen una alimentación equilibrada.</p>
       </div>
     </section>
   );
