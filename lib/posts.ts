@@ -1,29 +1,10 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export const CATEGORIES = ["Entrenamiento", "Nutrición", "Disciplina", "Suplementación", "Competición"] as const;
-export type Category = (typeof CATEGORIES)[number];
-export type BlogPost = {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: Category;
-  cover: string;
-  body: string;
-  date: string;
-  updatedAt: string;
-  status: "draft" | "published";
-  author: string;
-  tags: string[];
-};
-
-export function validSlug(slug: string): boolean {
-  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) && slug.length <= 90;
-}
-export function slugify(input: string): string {
-  return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 90).replace(/-$/g, "");
-}
+import { CATEGORIES, validSlug } from "./blog-types";
+import type { Category, BlogPost } from "./blog-types";
+export { CATEGORIES, slugify, validSlug } from "./blog-types";
+export type { BlogPost, Category } from "./blog-types";
 export function validatePost(value: unknown): BlogPost {
   if (!value || typeof value !== "object") throw new Error("Publicación no válida.");
   const p = value as Record<string, unknown>;

@@ -1,7 +1,7 @@
 "use client";
 import {useEffect,useState,type FormEvent,type ChangeEvent} from "react";
 import {useRouter} from "next/navigation";
-import {CATEGORIES,slugify,type BlogPost} from "@/lib/posts";
+import {CATEGORIES,slugify,type BlogPost} from "@/lib/blog-types";
 import Markdown from "@/app/components/blog/Markdown";
 type Draft=BlogPost;
 const today=()=>new Date().toISOString().slice(0,10);

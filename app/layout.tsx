@@ -67,7 +67,7 @@ export default function RootLayout({
         className={`${raleway.className} antialiased bg-[#0B0B0B]`}
       >
         <Navbar />
-        <main className="bg-[#0B0B0B]">{children}</main>
+        <div className="bg-[#0B0B0B]">{children}</div>
         <Footer />
       </body>
     </html>
