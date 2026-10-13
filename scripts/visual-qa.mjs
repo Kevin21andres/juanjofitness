@@ -3,10 +3,13 @@ import { mkdir } from "node:fs/promises";
 
 const base = "http://127.0.0.1:3000";
 const viewports = [
+  { name: "mobile-320", width: 320, height: 720 },
   { name: "mobile-360", width: 360, height: 780 },
   { name: "mobile-390", width: 390, height: 844 },
   { name: "tablet-768", width: 768, height: 1024 },
+  { name: "tablet-1024", width: 1024, height: 768 },
   { name: "desktop-1440", width: 1440, height: 900 },
+  { name: "wide-1920", width: 1920, height: 1080 },
 ];
 const routes = [
   { name: "home", url: "/" },
@@ -39,13 +42,16 @@ for (const viewport of viewports) {
         const bodyFamily = getComputedStyle(body).fontFamily;
         const titleFamily = title ? getComputedStyle(title).fontFamily : "";
         const horizontal = Math.max(document.documentElement.scrollWidth, body.scrollWidth);
-        return { horizontal, viewport: window.innerWidth, bodyFamily, titleFamily };
+        const control = document.querySelector("button, input, textarea, select");
+        const controlFamily = control ? getComputedStyle(control).fontFamily : bodyFamily;
+        const titleBounds = title?.getBoundingClientRect();
+        return { horizontal, viewport: window.innerWidth, bodyFamily, titleFamily, controlFamily, headingWidth: titleBounds?.width ?? 0 };
       });
 
       const errors = [];
       if (!response || response.status() >= 400) errors.push("HTTP " + response?.status());
       if (result.horizontal > result.viewport + 2) errors.push("Horizontal overflow: " + result.horizontal + " > " + result.viewport);
-      if (!result.bodyFamily.toLowerCase().includes("raleway") || !result.titleFamily.toLowerCase().includes("raleway")) errors.push("Raleway not applied");
+      if (![result.bodyFamily, result.titleFamily, result.controlFamily].every(font => font.toLowerCase().includes("raleway"))) errors.push("Raleway not applied to page and controls");
       errors.push(...browserErrors.map(message => "JS: " + message));
 
       if (route.name === "home" && viewport.width < 1024) {
@@ -103,5 +109,5 @@ if (failures) {
   console.error("Responsive smoke checks failed:", failures);
   process.exitCode = 1;
 } else {
-  console.log("All 20 responsive page checks passed.");
+  console.log("All 35 responsive page checks passed.");
 }

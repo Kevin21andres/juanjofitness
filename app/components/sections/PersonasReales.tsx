@@ -15,7 +15,16 @@ export default function PersonasReales() {
        <div><p className="kicker">04 / RESULTADOS REALES</p><h2 className="section-heading mt-6">EL PROCESO<br/>DEJA <span className="text-[#077c92]">HUELLA.</span></h2></div>
        <div><p className="body-copy max-w-lg text-[#4b5c65]">No hay dos historias iguales. Detrás de cada cambio hay meses de decisiones y trabajo constante.</p><p className="mt-5 text-xs font-bold leading-6 text-[#566771]">Resultados individuales; cada proceso depende del punto de partida y la constancia.</p></div>
      </div>
-     <div className="mt-13 grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-12">
+     <div className="mt-10 md:hidden">
+       <p className="mb-4 text-[11px] font-extrabold uppercase tracking-[.14em] text-[#52616b]">DESLIZA PARA VER LOS PROCESOS <span aria-hidden="true">→</span></p>
+       <div tabIndex={0} role="region" aria-label="Galería desplazable de resultados" className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-4">
+         {results.map((r,i)=><figure key={r.src} className="relative aspect-[3/4] w-[76vw] max-w-[330px] shrink-0 snap-center overflow-hidden bg-[#c5cecb]">
+           <Image src={"/personas/"+r.src} alt={r.alt} fill sizes="76vw" className="object-cover"/>
+           <span className="absolute bottom-0 left-0 bg-[#0b1115]/90 px-3 py-2 text-[10px] font-black uppercase tracking-wider text-white">{String(i+1).padStart(2,"0")} / JJHP</span>
+         </figure>)}
+       </div>
+     </div>
+     <div className="mt-13 hidden grid-cols-2 gap-2 sm:gap-4 md:grid lg:grid-cols-12">
        {results.map((r,i)=><figure key={r.src} className={"group relative overflow-hidden bg-[#c5cecb] "+(
           i===0?"col-span-2 aspect-[1.12] sm:aspect-[1.7] lg:col-span-6 lg:row-span-2 lg:aspect-auto":
           i===1?"col-span-2 aspect-[1.4] sm:col-span-1 sm:aspect-[.95] lg:col-span-3 lg:aspect-[.9]":

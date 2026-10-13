@@ -72,13 +72,18 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
               <article key={post.slug} className={"group min-w-0 " + (index === 0 ? "md:col-span-2 xl:col-span-2" : "")}>
                 <Link href={"/blog/" + post.slug} className="block h-full">
                   <div className={"relative overflow-hidden bg-[#d7d8d2] " + (index === 0 ? "aspect-[16/10] sm:aspect-[16/8]" : "aspect-[16/10]")}>
-                    {post.cover ? (
+                    {post.cover && !post.cover.includes("logo_jjhp.png") ? (
                       <Image alt={post.title} src={mediaUrl(post.cover)} unoptimized={post.cover.startsWith("/blog/uploads/")}
                         fill loading={index === 0 ? "eager" : "lazy"} fetchPriority={index === 0 ? "high" : "auto"}
                         sizes={index === 0 ? "(max-width: 767px) 100vw, (max-width: 1279px) 100vw, 800px" : "(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 390px"}
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"/>
                     ) : (
-                      <div className="flex h-full items-center justify-center bg-[#17242f] text-3xl font-extrabold text-white/65">JJHP</div>
+                      <div className={"absolute inset-0 flex flex-col justify-between overflow-hidden p-7 sm:p-10 " + (index % 2 ? "bg-[#193c44]" : "bg-[#102026]")}>
+                        <div className="flex items-center justify-between gap-3 border-b border-white/20 pb-4 text-[10px] font-black uppercase tracking-[.18em] text-[#1ad8ec]"><span>THE JJHP JOURNAL</span><span>{String(index+1).padStart(2, "0")} /</span></div>
+                        <span aria-hidden="true" className="absolute -bottom-9 -right-6 rotate-[-8deg] select-none text-[clamp(7rem,16vw,15rem)] font-black leading-none tracking-[-.15em] text-white/[.045]">JJHP</span>
+                        <p className="relative max-w-[570px] text-[clamp(1.65rem,3.8vw,4rem)] font-black leading-[.99] tracking-[-.065em] text-white">{post.title}</p>
+                        <span className="text-[11px] font-black uppercase tracking-[.16em] text-[#1ad8ec]">{post.category}</span>
+                      </div>
                     )}
                   </div>
                   <div className="mt-6 flex items-center gap-3 text-xs font-extrabold tracking-[.04em] text-[#077c92]">

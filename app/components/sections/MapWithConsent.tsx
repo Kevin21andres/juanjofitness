@@ -8,7 +8,7 @@ export default function MapWithConsent(){
  className="h-full w-full border-0" loading="lazy"
  referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
  /> : <div className="relative flex h-full flex-col items-center justify-center overflow-hidden px-6 text-center text-[#0b1115]">
- <span aria-hidden="true" className="absolute -right-7 -top-13 select-none text-[min(34vw,310px)] font-black leading-none tracking-[-.1em] text-[#cbdcd9]">43°</span>
+ <span aria-hidden="true" className="absolute -right-7 -top-13 select-none text-[min(27vw,220px)] font-black leading-none tracking-[-.1em] text-[#cbdcd9]">JJHP</span>
  <span className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-[#077c92] text-2xl text-[#077c92]">⌖</span>
  <h3 className="relative text-2xl font-black tracking-tight">Av. Catalunya, 31</h3>
  <p className="relative mt-2 text-sm font-bold text-[#53636b]">43002 Tarragona</p>
