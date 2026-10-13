@@ -68,7 +68,7 @@ export default function Footer() {
 
             {/* Social */}
             <div className="flex items-center gap-4">
-              <a
+              <Link
                 href="https://www.instagram.com/juanjofitness/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -78,7 +78,7 @@ export default function Footer() {
                 <InstagramIcon className="h-5 w-5 text-white" />
               </Link>
 
-              <a
+              <Link
                 href="https://www.facebook.com/p/Juanjo-Hidalgo-100063191922499/?locale=es_ES"
                 target="_blank"
                 rel="noopener noreferrer"

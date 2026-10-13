@@ -73,7 +73,7 @@ export default function Navbar() {
           {/* DESKTOP NAV */}
           <nav className="hidden items-center gap-8 md:flex">
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="group relative text-sm font-medium text-white/70 transition hover:text-white"
@@ -90,7 +90,7 @@ export default function Navbar() {
               Blog
             </Link>
 
-            <a
+            <Link
               href="/#contacto"
               className="inline-flex h-10 items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
             >
@@ -149,7 +149,7 @@ export default function Navbar() {
             <div className="px-6 py-8">
               <div className="flex flex-col gap-6">
                 {NAV_ITEMS.map((item) => (
-                  <a
+                  <Link
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
@@ -169,7 +169,7 @@ export default function Navbar() {
 
                 <div className="mt-4 h-px w-full bg-white/10" />
 
-                <a
+                <Link
                   href="/#contacto"
                   onClick={closeMenu}
                   className="mt-4 inline-flex h-12 items-center justify-center rounded-full bg-[#1E90FF] px-6 text-sm font-semibold text-white transition hover:bg-[#187bcd]"
