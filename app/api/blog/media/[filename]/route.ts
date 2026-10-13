@@ -45,7 +45,8 @@ export async function GET(_request: NextRequest, { params }: Context) {
   const token = process.env.GITHUB_TOKEN || "";
   const branch = process.env.GITHUB_BRANCH || "main";
   if (!/^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(repo) || !token) {
-    return new NextResponse("Media source unavailable", { status: 503 });
+    // Bundled demo images remain usable in previews with no GitHub credentials.
+    return NextResponse.redirect(new URL("/blog/uploads/" + filename, _request.url));
   }
 
   const extension = filename.split(".").at(-1) || "";
