@@ -26,7 +26,6 @@ jobs:
       - name: Install browser testing tool
         run: |
           npm install --no-save --no-package-lock playwright
-          npx playwright install --with-deps chromium
       - name: Start app
         run: |
           npm run start -- -p 3000 > /tmp/jjhp-next.log 2>&1 &

@@ -17,7 +17,7 @@ const routes = [
 ];
 
 await mkdir("qa-screenshots", { recursive: true });
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ channel: "chrome", headless: true });
 let failures = 0;
 
 for (const viewport of viewports) {
