@@ -17,6 +17,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+      - name: Reject vulnerable production dependencies
+        run: npm audit --omit=dev --audit-level=moderate
       - name: Show dependency risk report
         if: always()
         run: |
