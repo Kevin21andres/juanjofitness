@@ -1,4 +1,5 @@
 name: Upgrade vulnerable dependencies
+# Re-run after fixing a new React 19.3 lint rule in the administrator dashboard.
 on:
   push:
     branches:

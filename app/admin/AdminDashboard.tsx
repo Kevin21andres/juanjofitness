@@ -14,7 +14,23 @@ export default function AdminDashboard(){
  const set=<K extends keyof Draft>(key:K,value:Draft[K])=>setForm(old=>({...old,[key]:value}));
  async function load(){setLoading(true);try{const r=await fetch("/api/admin/posts",{cache:"no-store"});const data=await r.json();if(!r.ok)throw new Error(data.error||"No se pudo cargar.");setPosts(data.posts);}
  catch(e){setError(e instanceof Error?e.message:"Error inesperado.");}finally{setLoading(false);}}
- useEffect(()=>{void load();},[]);
+ useEffect(()=>{
+   let active = true;
+   async function initialLoad(){
+     try {
+       const response=await fetch("/api/admin/posts",{cache:"no-store"});
+       const data=await response.json();
+       if(!response.ok)throw new Error(data.error||"No se pudo cargar.");
+       if(active)setPosts(data.posts);
+     }catch(e){
+       if(active)setError(e instanceof Error?e.message:"Error inesperado.");
+     }finally{
+       if(active)setLoading(false);
+     }
+   }
+   void initialLoad();
+   return ()=>{active=false;};
+ },[]);
  function edit(p:BlogPost){setForm({...p});setTagText(p.tags.join(", "));setOriginal(p.slug);setError("");setMessage("");setPreview(false);window.scrollTo({top:0,behavior:"smooth"});}
  function fresh(){setForm(empty());setOriginal(null);setTagText("");setError("");setMessage("");setPreview(false);}
  async function save(e:FormEvent){e.preventDefault();setBusy(true);setError("");setMessage("");
