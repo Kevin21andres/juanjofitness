@@ -32,7 +32,9 @@ export async function GET(_request:NextRequest,{params}:Params){
     }
     if(!image.length||image.length>2*1024*1024)return new NextResponse("Media exceeds size limit",{status:502});
     const extension=filename.split(".").at(-1)||"";
-    return new NextResponse(image,{status:200,headers:{
+    const payload=new ArrayBuffer(image.length);
+    new Uint8Array(payload).set(image);
+    return new NextResponse(payload,{status:200,headers:{
       "Content-Type":types[extension],
       "Cache-Control":"public, max-age=60, s-maxage=60",
       "X-Content-Type-Options":"nosniff"
