@@ -11,7 +11,7 @@ npm run build
 ```
 
 ## Administración
-Acceso en `/admin/login`. El panel permite crear, editar y borrar artículos, guardar borradores, publicar, incorporar fotografías en el texto Markdown y subir portadas. Las entradas e imágenes se escriben en GitHub, y Vercel debe desplegar la rama configurada para publicarlas.
+Acceso en `/admin/login`. El panel permite crear, editar y borrar artículos, guardar borradores, publicar, incorporar fotografías en el texto Markdown y subir portadas. Las entradas e imágenes se escriben en GitHub, y El blog consulta las publicaciones directamente a GitHub (con un caché de 30 segundos en producción), sin hacer \`git pull\`. Las imágenes recién subidas se sirven mediante una ruta de la aplicación. También funcionará en local al configurar el token.
 
 Configura en Vercel (Environment Variables, nunca en el repositorio):
 
@@ -37,3 +37,14 @@ Los artículos son documentos JSON dentro de `content/posts/`. Solo los que tien
 2. Comprobar el build en CI y los flujos de inicio de sesión, publicación y carga de fotografías.
 3. Comprobar que Vercel despliega los nuevos commits hechos por el token elegido.
 4. Validar datos, fotografías y textos legales con el titular del negocio.
+
+## Pruebas locales del blog
+
+Desde la rama `feature/gestion-blog-juanjo`, ejecuta `npm ci` y `npm run dev`.
+Con `GITHUB_TOKEN`, `GITHUB_REPO` y `GITHUB_BRANCH` bien configurados, el blog público consulta los artículos de GitHub en tiempo real, incluso los que acabas de guardar desde `/admin`. **No necesitas ejecutar `git pull` después de crear un artículo o subir una imagen.** En producción puede tardar hasta 30 segundos en renovarse el caché público. Los borradores no se muestran en el blog público.
+
+La imagen puede aparecer tan pronto como finaliza su subida, incluso antes de guardar la publicación. Un cambio en el código sí requiere ejecutar `git pull` para actualizar la aplicación.
+
+### Auditoría de dependencias
+
+El flujo CI publica un resumen de `npm audit`. No uses `npm audit fix --force` como medida automática; revisa los avisos que requieran cambios incompatibles.
