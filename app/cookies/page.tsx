@@ -11,8 +11,7 @@ export default function Cookies() {
         </h1>
 
         <p className="text-white/70 leading-relaxed mb-10">
-          Este sitio web utiliza únicamente cookies técnicas necesarias para su
-          correcto funcionamiento.
+          Este sitio web utiliza los recursos técnicos necesarios para funcionar. El mapa de Google Maps se carga únicamente cuando el visitante decide mostrarlo. Los servicios de terceros pueden tratar datos y utilizar cookies según sus propias políticas.
         </p>
 
         {/* ¿Qué son? */}
@@ -35,10 +34,7 @@ export default function Cookies() {
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <p className="text-white/80 leading-relaxed">
-              Esta web no utiliza cookies analíticas, publicitarias ni de
-              terceros. Únicamente se emplean cookies técnicas necesarias
-              gestionadas por el proveedor de alojamiento (Vercel) para
-              garantizar la seguridad y el rendimiento del servicio.
+              No utilizamos directamente cookies analíticas ni de publicidad en el código de la web. El alojamiento puede emplear recursos técnicos de seguridad. Si decides cargar el mapa, el navegador se conectará a Google Maps, un proveedor externo que podría utilizar cookies u otros mecanismos de tratamiento de datos. Puedes evitarlo utilizando el enlace «Cómo llegar» sin cargar el mapa en esta página.
             </p>
           </div>
         </section>

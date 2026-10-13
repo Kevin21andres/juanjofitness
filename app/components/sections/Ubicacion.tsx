@@ -1,3 +1,4 @@
+import MapWithConsent from "./MapWithConsent";
 import Reveal from "../ui/Reveal";
 
 export default function Ubicacion() {
@@ -65,13 +66,7 @@ export default function Ubicacion() {
           <Reveal delay={0.2}>
             <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white shadow-[0_18px_55px_rgba(2,6,23,0.08)]">
               <div className="relative h-[360px] w-full sm:h-[420px]">
-                <iframe
-                  title="Ubicación Juanjo Fitness · JJHP Tarragona"
-                  src="https://www.google.com/maps?q=Av.+Catalunya+31,+43002+Tarragona&output=embed"
-                  className="h-full w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+                <MapWithConsent />
               </div>
 
               {/* Overlay sutil */}
