@@ -1,18 +1,9 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
-export default function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
-  const reduced = useReducedMotion();
-  return (
-    <motion.div
-      initial={reduced ? false : { opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: reduced ? 0 : 0.45, ease: "easeOut", delay: reduced ? 0 : Math.min(delay, 0.16) }}
-    >
-      {children}
-    </motion.div>
-  );
+/**
+ * Keep sections visible on first paint. Editorial content should not depend on
+ * JavaScript or intersection observers before it can be read.
+ */
+export default function Reveal({ children }: { children: ReactNode; delay?: number }) {
+  return <>{children}</>;
 }

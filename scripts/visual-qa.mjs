@@ -56,6 +56,25 @@ for (const viewport of viewports) {
         if (await page.getByRole("navigation", { name: "Menú móvil" }).count()) errors.push("Mobile navigation did not close with Escape");
       }
 
+      const takeScreenshot = (
+        ["home", "blog"].includes(route.name) && ["mobile-390", "desktop-1440"].includes(viewport.name)
+      ) || (["article", "admin-login"].includes(route.name) && viewport.name === "mobile-390");
+      if (takeScreenshot) {
+        // Scroll through the complete page so native lazy images are fetched.
+        await page.evaluate(async () => {
+          const step = Math.max(450, Math.floor(window.innerHeight * 0.75));
+          for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+            window.scrollTo(0, y);
+            await new Promise(resolve => setTimeout(resolve, 60));
+          }
+          window.scrollTo(0, 0);
+        });
+        await page.waitForLoadState("networkidle");
+        const brokenImages = await page.evaluate(() => Array.from(document.images)
+          .filter(image => image.complete && image.naturalWidth === 0)
+          .map(image => image.getAttribute("src")));
+        if (brokenImages.length) errors.push("Broken images: " + brokenImages.join(", "));
+      }
       if (["home", "blog"].includes(route.name) && ["mobile-390", "desktop-1440"].includes(viewport.name)) {
         await page.screenshot({ path: "qa-screenshots/" + route.name + "-" + viewport.name + ".png", fullPage: true, animations: "disabled" });
       }
