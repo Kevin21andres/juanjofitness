@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import InstagramIcon from "../ui/InstagramIcon";
 import FacebookIcon from "../ui/FacebookIcon";
@@ -31,18 +32,18 @@ export default function Footer() {
               Navegación
             </h4>
             <div className="flex flex-col gap-3 text-sm text-white/60">
-              <a href="/#metodo" className="hover:text-white transition">
+              <Link href="/#metodo" className="hover:text-white transition">
                 Método
-              </a>
-              <a href="/#tarifas" className="hover:text-white transition">
+              </Link>
+              <Link href="/#tarifas" className="hover:text-white transition">
                 Tarifas
-              </a>
-              <a href="/blog" className="hover:text-white transition">
+              </Link>
+              <Link href="/blog" className="hover:text-white transition">
                 Blog
-              </a>
-              <a href="/#contacto" className="hover:text-white transition">
+              </Link>
+              <Link href="/#contacto" className="hover:text-white transition">
                 Contacto
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -53,15 +54,15 @@ export default function Footer() {
                 Legal
               </h4>
               <div className="mt-3 flex flex-col gap-3 text-sm text-white/60">
-                <a href="/privacy" className="hover:text-white transition">
+                <Link href="/privacy" className="hover:text-white transition">
                   Privacidad
-                </a>
-                <a href="/cookies" className="hover:text-white transition">
+                </Link>
+                <Link href="/cookies" className="hover:text-white transition">
                   Cookies
-                </a>
-                <a href="/legal" className="hover:text-white transition">
+                </Link>
+                <Link href="/legal" className="hover:text-white transition">
                   Aviso legal
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -75,7 +76,7 @@ export default function Footer() {
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition"
               >
                 <InstagramIcon className="h-5 w-5 text-white" />
-              </a>
+              </Link>
 
               <a
                 href="https://www.facebook.com/p/Juanjo-Hidalgo-100063191922499/?locale=es_ES"
@@ -85,7 +86,7 @@ export default function Footer() {
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition"
               >
                 <FacebookIcon className="h-5 w-5 text-white" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

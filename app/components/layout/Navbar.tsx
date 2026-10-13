@@ -80,7 +80,7 @@ export default function Navbar() {
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-white/80 transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
             ))}
 
             <Link
@@ -95,7 +95,7 @@ export default function Navbar() {
               className="inline-flex h-10 items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               Empieza ahora
-            </a>
+            </Link>
           </nav>
 
           {/* MOBILE BUTTON */}
@@ -156,7 +156,7 @@ export default function Navbar() {
                     className="text-lg font-semibold text-white/85 transition hover:text-[#1E90FF]"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
 
                 <Link
@@ -175,7 +175,7 @@ export default function Navbar() {
                   className="mt-4 inline-flex h-12 items-center justify-center rounded-full bg-[#1E90FF] px-6 text-sm font-semibold text-white transition hover:bg-[#187bcd]"
                 >
                   Empieza ahora
-                </a>
+                </Link>
 
                 <p className="mt-4 text-xs text-white/50">
                   Respuesta rápida por WhatsApp y seguimiento real.

@@ -19,6 +19,6 @@ export default async function BlogPostPage({params}:{params:Promise<{slug:string
  <p className="mt-5 text-xl text-slate-600">{post.excerpt}</p><p className="mt-5 text-sm text-slate-500">Por {post.author}</p>
  {post.cover&&<div className="relative mt-10 aspect-video overflow-hidden rounded-2xl"><Image alt={post.title} src={post.cover} fill priority sizes="(max-width:768px) 100vw, 768px" className="object-cover"/></div>}
  <div className="mt-12"><Markdown body={post.body}/></div>
- <div className="mt-16 border-t pt-8"><p className="text-lg font-bold">¿Quieres empezar a entrenar?</p><a href="/#contacto" className="mt-5 inline-block rounded-xl bg-[#1E90FF] px-6 py-3 font-semibold text-white">Contactar con Juanjo</a></div>
+ <div className="mt-16 border-t pt-8"><p className="text-lg font-bold">¿Quieres empezar a entrenar?</p><Link href="/#contacto" className="mt-5 inline-block rounded-xl bg-[#1E90FF] px-6 py-3 font-semibold text-white">Contactar con Juanjo</Link></div>
  </div></article>;
 }
