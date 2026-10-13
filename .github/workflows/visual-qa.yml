@@ -1,0 +1,48 @@
+name: Responsive visual QA
+on:
+  pull_request:
+    paths:
+      - "app/**"
+      - "lib/**"
+      - "content/**"
+      - "scripts/visual-qa.mjs"
+      - ".github/workflows/visual-qa.yml"
+jobs:
+  viewport-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build production site
+        run: npm run build
+      - name: Install browser testing tool
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Start app
+        run: |
+          npm run start -- -p 3000 > /tmp/jjhp-next.log 2>&1 &
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/ > /dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/jjhp-next.log
+          exit 1
+      - name: Check 360, 390, 768 and 1440 px screens
+        run: node scripts/visual-qa.mjs
+      - name: Upload review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: responsive-design-screenshots
+          path: qa-screenshots/
+          retention-days: 7
+          if-no-files-found: ignore
