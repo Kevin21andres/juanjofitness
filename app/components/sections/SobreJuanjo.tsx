@@ -10,7 +10,7 @@ export default function SobreJuanjo() {
           <Reveal>
             <div className="relative max-w-[520px]">
               <div className="relative aspect-[4/5] overflow-hidden bg-[#dbe0e2]">
-                <Image src="/sobrejuanjo/sobrejuanjo.webp" alt="Juanjo Hidalgo" fill
+                <Image src="/hero/jjhp.webp" alt="Trofeos y trayectoria deportiva de Juanjo Fitness" fill
                   sizes="(max-width: 1023px) 90vw, 500px" className="object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-3 border-l-4 border-[#1684d4] bg-[#101820] px-6 py-5 text-white sm:right-[-28px]">

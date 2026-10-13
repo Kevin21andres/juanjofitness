@@ -24,8 +24,8 @@ export default function Hero() {
         </div>
         <div className="relative min-h-[400px] overflow-hidden bg-[#27323a] md:min-h-[580px]">
           <Image
-            src="/hero/jjhp.webp"
-            alt="Juanjo Hidalgo, entrenador personal y preparador físico"
+            src="/sobrejuanjo/sobrejuanjo.webp"
+            alt="Retrato de Juanjo Hidalgo, entrenador y preparador físico"
             fill priority
             sizes="(max-width: 767px) 100vw, (max-width: 1200px) 44vw, 540px"
             className="object-cover object-center"
