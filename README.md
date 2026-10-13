@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Juanjo Fitness — JJHP
 
-## Getting Started
+Web comercial y CMS de blog desarrollado en Next.js 16, React 19 y Tailwind CSS 4.
 
-First, run the development server:
-
+## Desarrollo
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Administración
+Acceso en `/admin/login`. El panel permite crear, editar y borrar artículos, guardar borradores, publicar, incorporar fotografías en el texto Markdown y subir portadas. Las entradas e imágenes se escriben en GitHub, y Vercel debe desplegar la rama configurada para publicarlas.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Configura en Vercel (Environment Variables, nunca en el repositorio):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `ADMIN_PASSWORD_HASH`: hash scrypt de la contraseña de Juanjo.
+- `ADMIN_SESSION_SECRET`: secreto aleatorio de al menos 32 caracteres.
+- `GITHUB_TOKEN`: token de acceso de GitHub con permisos **Contents: read/write**, exclusivo para este repositorio.
+- `GITHUB_REPO`: `Kevin21andres/juanjofitness`.
+- `GITHUB_BRANCH`: `main` tras fusionar la rama de desarrollo.
 
-## Learn More
+Para generar los dos secretos en tu equipo:
+```bash
+node -e 'const c=require("node:crypto");const s=c.randomBytes(16);const pw=process.env.JJHP_PASSWORD;if(!pw)throw Error("Define JJHP_PASSWORD");console.log("scrypt$"+s.toString("hex")+"$"+c.scryptSync(pw,s,64).toString("hex"));'
+node -e 'console.log(require("node:crypto").randomBytes(32).toString("hex"))'
+```
+Establece `JJHP_PASSWORD` solo en tu terminal para generar el hash, no en Vercel. No guardes la contraseña sin cifrar.
 
-To learn more about Next.js, take a look at the following resources:
+**Seguridad operativa:** protege `/admin/login` con un WAF/rate limit en Vercel para evitar intentos masivos de contraseña. Usa una contraseña larga, un token de alcance mínimo y revócalo al dejar de utilizar el panel. Mantén protegida la rama `main` y habilita revisiones del historial de cambios. Los cambios se publican cuando termina el despliegue, no en el instante de pulsar Guardar.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Los artículos son documentos JSON dentro de `content/posts/`. Solo los que tienen `status: "published"` se muestran al público. La aplicación nunca ejecuta HTML arbitrario incluido en los artículos. Las imágenes admiten JPG, PNG y WebP, hasta 2 MB, y se guardan en `public/blog/uploads/`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Antes de pasar a producción
+1. Configurar secretos y limitar acceso al panel.
+2. Comprobar el build en CI y los flujos de inicio de sesión, publicación y carga de fotografías.
+3. Comprobar que Vercel despliega los nuevos commits hechos por el token elegido.
+4. Validar datos, fotografías y textos legales con el titular del negocio.

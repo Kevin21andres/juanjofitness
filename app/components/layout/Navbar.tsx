@@ -5,8 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const NAV_ITEMS = [
-  { label: "Método", href: "#metodo" },
-  { label: "Tarifas", href: "#tarifas" },
+  { label: "Método", href: "/#metodo" },
+  { label: "Tarifas", href: "/#tarifas" },
 ];
 
 export default function Navbar() {
@@ -91,7 +91,7 @@ export default function Navbar() {
             </Link>
 
             <a
-              href="#contacto"
+              href="/#contacto"
               className="inline-flex h-10 items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               Empieza ahora
@@ -170,7 +170,7 @@ export default function Navbar() {
                 <div className="mt-4 h-px w-full bg-white/10" />
 
                 <a
-                  href="#contacto"
+                  href="/#contacto"
                   onClick={closeMenu}
                   className="mt-4 inline-flex h-12 items-center justify-center rounded-full bg-[#1E90FF] px-6 text-sm font-semibold text-white transition hover:bg-[#187bcd]"
                 >

@@ -41,7 +41,7 @@ export default function PacksProcell() {
               </ul>
 
               <a
-                href="https://wa.me/34600000000"
+                href="https://wa.me/34649833960"
                 target="_blank"
                 className="mt-8 inline-block rounded-md bg-[#1E90FF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#187bcd] transition"
               >
@@ -67,7 +67,7 @@ export default function PacksProcell() {
               </ul>
 
               <a
-                href="https://wa.me/34600000000"
+                href="https://wa.me/34649833960"
                 target="_blank"
                 className="mt-8 inline-block rounded-md bg-[#1E90FF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#187bcd] transition"
               >
@@ -94,7 +94,7 @@ export default function PacksProcell() {
               </ul>
 
               <a
-                href="https://wa.me/34600000000"
+                href="https://wa.me/34649833960"
                 target="_blank"
                 className="mt-8 inline-block rounded-md bg-[#1E90FF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#187bcd] transition"
               >

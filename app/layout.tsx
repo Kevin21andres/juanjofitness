@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Juanjo Fitness",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/blog/covers/logo_jjhp.png",
         width: 1200,
         height: 630,
         alt: "Juanjo Fitness · Entrenador personal en Tarragona",
@@ -52,9 +52,7 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  alternates: {
-    canonical: "https://juanjofitness.com",
-  },
+
 };
 
 export default function RootLayout({

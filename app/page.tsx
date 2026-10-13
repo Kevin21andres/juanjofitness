@@ -14,11 +14,12 @@ export default function Home() {
       <Hero />
       <PersonasReales />
       <SobreJuanjo />
+      <Servicios />
       <Metodo />
       <Tarifas />
+      <PacksProcell />
       <Ubicacion />
       <Contacto />
     </>
   );
 }
-//
