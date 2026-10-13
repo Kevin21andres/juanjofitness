@@ -1,6 +1,7 @@
 "use client";
 import type { ReactNode } from "react";
 import Image from "next/image";
+import {mediaUrl} from "@/lib/blog-types";
 
 function inline(text: string): ReactNode[] {
   const pieces = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\((?:https?:\/\/[^\s)]+|\/[^\s)]+)\))/g);
@@ -27,7 +28,7 @@ export default function Markdown({ body }: { body: string }) {
     const line = raw.trim();
     if (!line) { flush(); continue; }
     const image = /^!\[([^\]]{0,160})\]\((\/blog\/(?:uploads|covers)\/[\w.-]+\.(?:webp|png|jpe?g))\)$/.exec(line);
-    if (image) { flush(); elements.push(<figure key={elements.length} className="my-8"><Image src={image[2]} alt={image[1]} width={1000} height={650} sizes="(max-width: 768px) 100vw, 800px" className="h-auto w-full rounded-2xl object-cover"/>{image[1] && <figcaption className="mt-2 text-center text-sm text-slate-500">{image[1]}</figcaption>}</figure>); continue; }
+    if (image) { flush(); elements.push(<figure key={elements.length} className="my-8"><Image src={mediaUrl(image[2])} unoptimized={image[2].startsWith("/blog/uploads/")} alt={image[1]} width={1000} height={650} sizes="(max-width: 768px) 100vw, 800px" className="h-auto w-full rounded-2xl object-cover"/>{image[1] && <figcaption className="mt-2 text-center text-sm text-slate-500">{image[1]}</figcaption>}</figure>); continue; }
     const heading = /^(#{1,3})\s+(.+)$/.exec(line);
     if (heading) { flush(); const cl = "mb-4 mt-10 font-extrabold text-slate-950"; const content = inline(heading[2]); elements.push(heading[1].length === 1 ? <h2 key={elements.length} className={cl + " text-3xl"}>{content}</h2> : heading[1].length === 2 ? <h2 key={elements.length} className={cl + " text-2xl"}>{content}</h2> : <h3 key={elements.length} className={cl + " text-xl"}>{content}</h3>); continue; }
     if (/^[-*]\s+/.test(line)) { if (paragraph.length || ordered.length) flush(); bullets.push(line.replace(/^[-*]\s+/, "")); continue; }
